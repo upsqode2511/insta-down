@@ -56,8 +56,12 @@ export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'stor
     title,
     description,
     robots: {
-      index: true,
-      follow: true,
+      index: false,
+      follow: false,
+      googleBot: {
+        index: false,
+        follow: false,
+      },
     },
     alternates: {
       canonical: getUrl(lang),
