@@ -67,8 +67,12 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: string 
           }
             
           return (
-            <a key={lang.code} href={href}>
-              {lang.code.toUpperCase()} - {lang.label}
+            <a 
+              key={lang.code} 
+              href={href}
+              className={lang.code === currentLang ? 'active' : ''}
+            >
+              {lang.label}
             </a>
           );
         })}

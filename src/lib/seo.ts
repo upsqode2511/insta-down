@@ -15,8 +15,8 @@ export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'stor
   switch (pageType) {
     case 'video':
       slug = "";
-      title = dict.pages.videoTitle;
-      description = dict.pages.videoSubtitle;
+      title = lang === 'en' ? "Instagram Profile Picture Downloader in HD - Instadown" : dict.pages.videoTitle;
+      description = lang === 'en' ? "Download Instagram profile pictures using a free and fast online web-based tool. 'Insta Profile Viewer' is a 100% free and the best Instagram profile downloader." : dict.pages.videoSubtitle;
       break;
     case 'photo':
       slug = "instagram-photo-downloader";

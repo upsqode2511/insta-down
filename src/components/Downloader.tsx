@@ -13,6 +13,34 @@ type DownloaderProps = {
   dict: Dictionary;
 };
 
+function renderReasonContent(text?: string) {
+  if (!text) return null;
+  const match = text.match(/^([^.!?\u3002\uFF0E]+[.!?\u3002\uFF0E])\s*(.*)$/);
+  if (match) {
+    const title = match[1].trim();
+    const description = match[2].trim();
+    return (
+      <div style={{ flex: 1 }}>
+        <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#1a1a2e', margin: 0, marginBottom: description ? '0.4rem' : 0, lineHeight: '1.4' }}>
+          {title}
+        </h3>
+        {description && (
+          <p style={{ color: '#555', lineHeight: '1.6', margin: 0, fontSize: '1rem' }}>
+            {description}
+          </p>
+        )}
+      </div>
+    );
+  }
+  return (
+    <div style={{ flex: 1 }}>
+      <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#1a1a2e', margin: 0, lineHeight: '1.4' }}>
+        {text}
+      </h3>
+    </div>
+  );
+}
+
 export default function Downloader({ lang, activeTab, title, subtitle, dict }: DownloaderProps) {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
@@ -195,11 +223,11 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
 
         <div style={{ textAlign: 'center', margin: '4rem 0 3rem' }}>
           <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1a1a2e', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
-            <span style={{ color: '#3b82f6', fontSize: '1.5rem' }}>✨</span> 
+             
             {activeTab === 'reel' 
               ? (dict.informationalContent?.reelsHowItWorksTitle || dict.informationalContent?.howItWorksTitle || 'How it works')
               : (dict.informationalContent?.howItWorksTitle || 'How it works')}
-            <span style={{ color: '#3b82f6', fontSize: '1.5rem' }}>✨</span>
+            
           </h2>
           <p style={{ color: '#64748b', fontSize: '1.1rem', marginTop: '0.5rem', maxWidth: '800px', margin: '0.5rem auto 0' }}>
             {activeTab === 'reel'
@@ -255,13 +283,13 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="2" y1="2" x2="22" y2="22"/><path d="M8.5 8.5a10 10 0 0 1 12.3 2.1"/><path d="M5 12a10 10 0 0 1-1.3-1.6"/><path d="M12.5 12.5a5 5 0 0 1 5.3 1.1"/><path d="M9 16a5 5 0 0 1-1.3-1.3"/><circle cx="12" cy="20" r="1"/></svg>,
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8l-3 3 3 3"/><path d="M17 8l3 3-3 3"/><line x1="14" y1="7" x2="10" y2="15"/><circle cx="18" cy="18" r="3"/><path d="M18 14v1M18 21v1M14 18h1M21 18h1M15.5 15.5l.5.5M20 20l.5.5M20 15.5l-.5.5M15.5 20.5l.5-.5"/></svg>
             ].map((icon, idx) => (
-              <article key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', backgroundColor: '#fff', padding: '1.5rem', borderRadius: '16px', border: '1px solid #eaeaea', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
+              <article key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', backgroundColor: '#fff', padding: '1.5rem', borderRadius: '16px', border: '1px solid #eaeaea', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
                 <div style={{ flexShrink: 0, width: '64px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fcfcfc', borderRadius: '12px', color: '#222' }}>
                   {icon}
                 </div>
-                <p style={{ color: '#555', lineHeight: '1.6', margin: 0, fontSize: '1.05rem' }}>
-                  {dict.informationalContent?.reelsWhyUseReasons?.[idx]}
-                </p>
+                {renderReasonContent(dict.informationalContent?.reelsWhyUseReasons?.[idx])}
+
+
               </article>
             ))
           ) : (
@@ -273,13 +301,13 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="2" y1="2" x2="22" y2="22"/><path d="M8.5 8.5a10 10 0 0 1 12.3 2.1"/><path d="M5 12a10 10 0 0 1-1.3-1.6"/><path d="M12.5 12.5a5 5 0 0 1 5.3 1.1"/><path d="M9 16a5 5 0 0 1-1.3-1.3"/><circle cx="12" cy="20" r="1"/></svg>,
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8l-3 3 3 3"/><path d="M17 8l3 3-3 3"/><line x1="14" y1="7" x2="10" y2="15"/><circle cx="18" cy="18" r="3"/><path d="M18 14v1M18 21v1M14 18h1M21 18h1M15.5 15.5l.5.5M20 20l.5.5M20 15.5l-.5.5M15.5 20.5l.5-.5"/></svg>
             ].map((icon, idx) => (
-              <article key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', backgroundColor: '#fff', padding: '1.5rem', borderRadius: '16px', border: '1px solid #eaeaea', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
+              <article key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', backgroundColor: '#fff', padding: '1.5rem', borderRadius: '16px', border: '1px solid #eaeaea', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
                 <div style={{ flexShrink: 0, width: '64px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fcfcfc', borderRadius: '12px', color: '#222' }}>
                   {icon}
                 </div>
-                <p style={{ color: '#555', lineHeight: '1.6', margin: 0, fontSize: '1.05rem' }}>
-                  {dict.informationalContent?.whyUseReasons?.[idx]}
-                </p>
+                {renderReasonContent(dict.informationalContent?.whyUseReasons?.[idx])}
+
+
               </article>
             ))
           )}
@@ -293,31 +321,24 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
             ? (dict.informationalContent?.reelsFeaturesTitle || "Features of InstaDown Instagram Reels Downloader")
             : (dict.informationalContent?.featuresTitle || "Features of InstaDown")}
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: activeTab === 'reel' ? 'repeat(auto-fit, minmax(400px, 1fr))' : 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
           {(activeTab === 'reel' ? [
             {
-              title: "Video",
+              title: dict.informationalContent?.reelsFeaturesList?.[0]?.title || dict.tabs?.video || "Video",
               desc: dict.informationalContent?.reelsFeaturesList?.[0]?.desc || "Our Instagram video downloader helps you save videos using their links (URLs). Simply copy the video link, paste it into InstaDown, and use the available download option to save the content to your device.",
               icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>,
               bg: "linear-gradient(135deg, #a855f7, #7e22ce)",
               color: "#7e22ce"
             },
             {
-              title: "Reels",
-              desc: "Save Instagram reels in HD quality to your device.",
-              icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>,
-              bg: "linear-gradient(135deg, #f472b6, #db2777)",
-              color: "#db2777"
-            },
-            {
-              title: "Photos",
+              title: dict.informationalContent?.reelsFeaturesList?.[1]?.title || dict.tabs?.photo || "Photos",
               desc: dict.informationalContent?.reelsFeaturesList?.[1]?.desc || "Save supported Instagram photos using their public post URLs. Instadown offers a simple way to process photo links and download available image content without the need for additional software or complex steps.",
               icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>,
               bg: "linear-gradient(135deg, #4ade80, #16a34a)",
               color: "#16a34a"
             },
             {
-              title: "Profile",
+              title: dict.informationalContent?.reelsFeaturesList?.[2]?.title || dict.tabs?.profile || "Profile",
               desc: dict.informationalContent?.reelsFeaturesList?.[2]?.desc || "The Profile Downloader is designed to help you retrieve downloadable content associated with supported Instagram profiles. Enter the relevant profile URL and use the available options to find and save supported content.",
               icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>,
               bg: "linear-gradient(135deg, #60a5fa, #2563eb)",
@@ -325,29 +346,22 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
             }
           ] : [
             {
-              title: "Video",
-              desc: "Download Instagram videos in MP4 format in high quality.",
-              icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>,
-              bg: "linear-gradient(135deg, #a855f7, #7e22ce)",
-              color: "#7e22ce"
-            },
-            {
-              title: "Reels",
-              desc: "Save Instagram reels in HD quality to your device.",
+              title: dict.tabs?.reel || "Reels",
+              desc: dict.informationalContent?.featuresList?.[0]?.desc || "Save Instagram reels in HD quality to your device.",
               icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>,
               bg: "linear-gradient(135deg, #f472b6, #db2777)",
               color: "#db2777"
             },
             {
-              title: "Photo",
-              desc: "Download Instagram photos in original quality.",
+              title: dict.informationalContent?.featuresList?.[1]?.title || dict.tabs?.photo || "Photo",
+              desc: dict.informationalContent?.featuresList?.[1]?.desc || "Download Instagram photos in original quality.",
               icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>,
               bg: "linear-gradient(135deg, #4ade80, #16a34a)",
               color: "#16a34a"
             },
             {
-              title: "Profile",
-              desc: "Download profile pictures in full size instantly.",
+              title: dict.informationalContent?.featuresList?.[2]?.title || dict.tabs?.profile || "Profile",
+              desc: dict.informationalContent?.featuresList?.[2]?.desc || "Download profile pictures in full size instantly.",
               icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>,
               bg: "linear-gradient(135deg, #60a5fa, #2563eb)",
               color: "#2563eb"
@@ -398,9 +412,9 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
             <div style={{ marginTop: '4rem' }}>
               <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1a1a2e', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
-                  <span style={{ color: '#3b82f6', fontSize: '1.5rem' }}>✨</span> 
+                   
                   {dict.informationalContent.photoHowItWorksTitle}
-                  <span style={{ color: '#3b82f6', fontSize: '1.5rem' }}>✨</span>
+                  
                 </h2>
                 <p style={{ color: '#64748b', fontSize: '1.1rem', marginTop: '0.5rem', maxWidth: '800px', margin: '0.5rem auto 0' }}>
                   Download in just 3 simple steps
@@ -456,13 +470,13 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="2" y1="2" x2="22" y2="22"/><path d="M8.5 8.5a10 10 0 0 1 12.3 2.1"/><path d="M5 12a10 10 0 0 1-1.3-1.6"/><path d="M12.5 12.5a5 5 0 0 1 5.3 1.1"/><path d="M9 16a5 5 0 0 1-1.3-1.3"/><circle cx="12" cy="20" r="1"/></svg>,
                   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8l-3 3 3 3"/><path d="M17 8l3 3-3 3"/><line x1="14" y1="7" x2="10" y2="15"/><circle cx="18" cy="18" r="3"/><path d="M18 14v1M18 21v1M14 18h1M21 18h1M15.5 15.5l.5.5M20 20l.5.5M20 15.5l-.5.5M15.5 20.5l.5-.5"/></svg>
                 ].map((icon, idx) => (
-                  <article key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', backgroundColor: '#fff', padding: '1.5rem', borderRadius: '16px', border: '1px solid #eaeaea', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
+                  <article key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', backgroundColor: '#fff', padding: '1.5rem', borderRadius: '16px', border: '1px solid #eaeaea', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
                     <div style={{ flexShrink: 0, width: '64px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fcfcfc', borderRadius: '12px', color: '#222' }}>
                       {icon}
                     </div>
-                    <p style={{ color: '#555', lineHeight: '1.6', margin: 0, fontSize: '1.05rem' }}>
-                      {dict.informationalContent?.photoWhyUseReasons?.[idx]}
-                    </p>
+                    {renderReasonContent(dict.informationalContent?.photoWhyUseReasons?.[idx])}
+
+
                   </article>
                 ))}
               </div>
@@ -477,21 +491,21 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
                 {[
                   {
-                    title: dict.informationalContent.photoFeaturesList[0]?.title || "Video",
+                    title: dict.informationalContent.photoFeaturesList[0]?.title || dict.tabs?.video || "Video",
                     desc: dict.informationalContent.photoFeaturesList[0]?.desc,
                     icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>,
                     bg: "linear-gradient(135deg, #a855f7, #7e22ce)",
                     color: "#7e22ce"
                   },
                   {
-                    title: dict.informationalContent.photoFeaturesList[1]?.title || "Reels",
+                    title: dict.informationalContent.photoFeaturesList[1]?.title || dict.tabs?.reel || "Reels",
                     desc: dict.informationalContent.photoFeaturesList[1]?.desc,
                     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>,
                     bg: "linear-gradient(135deg, #f472b6, #db2777)",
                     color: "#db2777"
                   },
                   {
-                    title: dict.informationalContent.photoFeaturesList[2]?.title || "Profile",
+                    title: dict.informationalContent.photoFeaturesList[2]?.title || dict.tabs?.profile || "Profile",
                     desc: dict.informationalContent.photoFeaturesList[2]?.desc,
                     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>,
                     bg: "linear-gradient(135deg, #60a5fa, #2563eb)",
@@ -547,9 +561,9 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
             <div style={{ marginTop: '4rem' }}>
               <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1a1a2e', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
-                  <span style={{ color: '#3b82f6', fontSize: '1.5rem' }}>✨</span> 
+                   
                   {dict.informationalContent.profileHowItWorksTitle}
-                  <span style={{ color: '#3b82f6', fontSize: '1.5rem' }}>✨</span>
+                  
                 </h2>
                 <p style={{ color: '#64748b', fontSize: '1.1rem', marginTop: '0.5rem', maxWidth: '800px', margin: '0.5rem auto 0' }}>
                   Download in just 3 simple steps
@@ -605,13 +619,13 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="2" y1="2" x2="22" y2="22"/><path d="M8.5 8.5a10 10 0 0 1 12.3 2.1"/><path d="M5 12a10 10 0 0 1-1.3-1.6"/><path d="M12.5 12.5a5 5 0 0 1 5.3 1.1"/><path d="M9 16a5 5 0 0 1-1.3-1.3"/><circle cx="12" cy="20" r="1"/></svg>,
                   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8l-3 3 3 3"/><path d="M17 8l3 3-3 3"/><line x1="14" y1="7" x2="10" y2="15"/><circle cx="18" cy="18" r="3"/><path d="M18 14v1M18 21v1M14 18h1M21 18h1M15.5 15.5l.5.5M20 20l.5.5M20 15.5l-.5.5M15.5 20.5l.5-.5"/></svg>
                 ].map((icon, idx) => (
-                  <article key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', backgroundColor: '#fff', padding: '1.5rem', borderRadius: '16px', border: '1px solid #eaeaea', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
+                  <article key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', backgroundColor: '#fff', padding: '1.5rem', borderRadius: '16px', border: '1px solid #eaeaea', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
                     <div style={{ flexShrink: 0, width: '64px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fcfcfc', borderRadius: '12px', color: '#222' }}>
                       {icon}
                     </div>
-                    <p style={{ color: '#555', lineHeight: '1.6', margin: 0, fontSize: '1.05rem' }}>
-                      {dict.informationalContent?.profileWhyUseReasons?.[idx]}
-                    </p>
+                    {renderReasonContent(dict.informationalContent?.profileWhyUseReasons?.[idx])}
+
+
                   </article>
                 ))}
               </div>
@@ -626,21 +640,21 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
                 {[
                   {
-                    title: dict.informationalContent.profileFeaturesList[0]?.title || "Video",
+                    title: dict.informationalContent.profileFeaturesList[0]?.title || dict.tabs?.video || "Video",
                     desc: dict.informationalContent.profileFeaturesList[0]?.desc,
                     icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>,
                     bg: "linear-gradient(135deg, #a855f7, #7e22ce)",
                     color: "#7e22ce"
                   },
                   {
-                    title: dict.informationalContent.profileFeaturesList[1]?.title || "Reels",
+                    title: dict.informationalContent.profileFeaturesList[1]?.title || dict.tabs?.reel || "Reels",
                     desc: dict.informationalContent.profileFeaturesList[1]?.desc,
                     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>,
                     bg: "linear-gradient(135deg, #f472b6, #db2777)",
                     color: "#db2777"
                   },
                   {
-                    title: dict.informationalContent.profileFeaturesList[2]?.title || "Photo",
+                    title: dict.informationalContent.profileFeaturesList[2]?.title || dict.tabs?.photo || "Photo",
                     desc: dict.informationalContent.profileFeaturesList[2]?.desc,
                     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>,
                     bg: "linear-gradient(135deg, #4ade80, #16a34a)",
