@@ -55,6 +55,18 @@ export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'stor
   return {
     title,
     description,
+    openGraph: {
+      title,
+      description,
+      url: getUrl(lang),
+      siteName: "InstaDown",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
     robots: {
       index: false,
       follow: false,

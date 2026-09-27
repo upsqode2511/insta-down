@@ -17,7 +17,7 @@ function renderReasonContent(text?: string) {
   if (!text) return null;
   const match = text.match(/^([^.!?\u3002\uFF0E]+[.!?\u3002\uFF0E])\s*(.*)$/);
   if (match) {
-    const title = match[1].trim();
+    const title = match[1].replace(/[.!?\u3002\uFF0E]+$/, '').trim();
     const description = match[2].trim();
     return (
       <div style={{ flex: 1 }}>
@@ -270,6 +270,12 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
         <h2 style={{ fontSize: '2.2rem', fontWeight: 'bold', margin: '4rem 0 2rem', textAlign: 'center', color: '#333' }}>
           {activeTab === 'reel' 
             ? (dict.informationalContent?.reelsWhyUseTitle || dict.informationalContent?.whyUseTitle)
+            : activeTab === 'photo'
+            ? (dict.informationalContent?.photoWhyUseTitle || dict.informationalContent?.whyUseTitle)
+            : activeTab === 'profile'
+            ? (dict.informationalContent?.profileWhyUseTitle || dict.informationalContent?.whyUseTitle)
+            : activeTab === 'story'
+            ? (dict.informationalContent?.storyWhyUseTitle || dict.informationalContent?.whyUseTitle)
             : dict.informationalContent?.whyUseTitle}
         </h2>
         
@@ -288,8 +294,6 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                   {icon}
                 </div>
                 {renderReasonContent(dict.informationalContent?.reelsWhyUseReasons?.[idx])}
-
-
               </article>
             ))
           ) : (
@@ -305,9 +309,15 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                 <div style={{ flexShrink: 0, width: '64px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fcfcfc', borderRadius: '12px', color: '#222' }}>
                   {icon}
                 </div>
-                {renderReasonContent(dict.informationalContent?.whyUseReasons?.[idx])}
-
-
+                {renderReasonContent(
+                  activeTab === 'photo'
+                    ? dict.informationalContent?.photoWhyUseReasons?.[idx]
+                    : activeTab === 'profile'
+                    ? dict.informationalContent?.profileWhyUseReasons?.[idx]
+                    : activeTab === 'story'
+                    ? dict.informationalContent?.storyWhyUseReasons?.[idx]
+                    : dict.informationalContent?.whyUseReasons?.[idx]
+                )}
               </article>
             ))
           )}
@@ -369,22 +379,23 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
           ]).map((card, idx) => (
             <article key={idx} style={{ 
               backgroundColor: '#fff', 
-              padding: activeTab === 'reel' ? '1.75rem' : '1.25rem', 
+              padding: '1.5rem', 
               borderRadius: '16px', 
               border: '1px solid #eaeaea', 
               boxShadow: '0 4px 12px rgba(0,0,0,0.03)', 
               display: 'flex', 
-              flexDirection: activeTab === 'reel' ? 'column' : 'row',
-              alignItems: 'flex-start', 
-              gap: activeTab === 'reel' ? '1.25rem' : '1rem',
+              flexDirection: 'column',
+              alignItems: 'center', 
+              textAlign: 'center',
+              gap: '1rem',
               height: '100%'
             }}>
               <div style={{ flexShrink: 0, width: '48px', height: '48px', borderRadius: '50%', background: card.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {card.icon}
               </div>
-              <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: card.color }}>{card.title}</h3>
-                <p style={{ color: '#64748b', lineHeight: '1.6', fontSize: '0.9rem', margin: 0 }}>{card.desc}</p>
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: card.color, textAlign: 'center' }}>{card.title}</h3>
+                <p style={{ color: '#64748b', lineHeight: '1.6', fontSize: '0.9rem', margin: 0, textAlign: 'center' }}>{card.desc}</p>
               </div>
             </article>
           ))}
@@ -514,22 +525,23 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                 ].map((card, idx) => (
                   <article key={idx} style={{ 
                     backgroundColor: '#fff', 
-                    padding: '1.25rem', 
+                    padding: '1.5rem', 
                     borderRadius: '16px', 
                     border: '1px solid #eaeaea', 
                     boxShadow: '0 4px 12px rgba(0,0,0,0.03)', 
                     display: 'flex', 
-                    flexDirection: 'row',
-                    alignItems: 'flex-start', 
+                    flexDirection: 'column',
+                    alignItems: 'center', 
+                    textAlign: 'center',
                     gap: '1rem',
                     height: '100%'
                   }}>
                     <div style={{ flexShrink: 0, width: '48px', height: '48px', borderRadius: '50%', background: card.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       {card.icon}
                     </div>
-                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                      <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: card.color }}>{card.title}</h3>
-                      <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5', margin: 0 }}>
+                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                      <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: card.color, textAlign: 'center' }}>{card.title}</h3>
+                      <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5', margin: 0, textAlign: 'center' }}>
                         {card.desc}
                       </p>
                     </div>
@@ -663,22 +675,23 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                 ].map((card, idx) => (
                   <article key={idx} style={{ 
                     backgroundColor: '#fff', 
-                    padding: '1.25rem', 
+                    padding: '1.5rem', 
                     borderRadius: '16px', 
                     border: '1px solid #eaeaea', 
                     boxShadow: '0 4px 12px rgba(0,0,0,0.03)', 
                     display: 'flex', 
-                    flexDirection: 'row',
-                    alignItems: 'flex-start', 
+                    flexDirection: 'column',
+                    alignItems: 'center', 
+                    textAlign: 'center',
                     gap: '1rem',
                     height: '100%'
                   }}>
                     <div style={{ flexShrink: 0, width: '48px', height: '48px', borderRadius: '50%', background: card.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       {card.icon}
                     </div>
-                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                      <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: card.color }}>{card.title}</h3>
-                      <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5', margin: 0 }}>
+                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                      <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: card.color, textAlign: 'center' }}>{card.title}</h3>
+                      <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5', margin: 0, textAlign: 'center' }}>
                         {card.desc}
                       </p>
                     </div>
