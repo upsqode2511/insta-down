@@ -21,11 +21,11 @@ function renderReasonContent(text?: string) {
     const description = match[2].trim();
     return (
       <div style={{ flex: 1 }}>
-        <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#1a1a2e', margin: 0, marginBottom: description ? '0.4rem' : 0, lineHeight: '1.4' }}>
+        <h3 style={{ fontWeight: '700', color: '#1a1a2e', margin: 0, marginBottom: description ? '0.4rem' : 0, lineHeight: '1.4' }}>
           {title}
         </h3>
         {description && (
-          <p style={{ color: '#555', lineHeight: '1.6', margin: 0, fontSize: '1rem' }}>
+          <p style={{ color: '#555', lineHeight: '1.6', margin: 0 }}>
             {description}
           </p>
         )}
@@ -34,7 +34,7 @@ function renderReasonContent(text?: string) {
   }
   return (
     <div style={{ flex: 1 }}>
-      <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#1a1a2e', margin: 0, lineHeight: '1.4' }}>
+      <h3 style={{ fontWeight: '700', color: '#1a1a2e', margin: 0, lineHeight: '1.4' }}>
         {text}
       </h3>
     </div>
@@ -127,7 +127,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
           }}
         >
           <div className="input-wrapper">
-            <svg className="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="input-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
               <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
             </svg>
@@ -139,7 +139,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
               autoCorrect="off"
               spellCheck={false}
               className="url-input" 
-              placeholder={dict.downloader.placeholder} 
+              placeholder={dict?.downloader?.placeholder || "Search or paste Instagram link here"} 
               aria-label="Instagram URL"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
@@ -152,33 +152,39 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                 }
               }}
             />
-            <button type="button" className="paste-btn" onClick={handlePaste}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <button type="button" className="desktop-paste-btn" onClick={handlePaste}>
+              {dict?.downloader?.paste || 'Paste'}
+            </button>
+          </div>
+
+          <div className="buttons-row">
+            <button type="button" className="panel-paste-btn" onClick={handlePaste}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
                 <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
               </svg>
-              {dict.downloader.paste}
+              {dict?.downloader?.paste || 'Paste'}
+            </button>
+            <button 
+              type="submit" 
+              className="panel-download-btn" 
+              disabled={loading}
+            >
+              {loading ? (
+                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              )}
+              {loading ? 'Processing...' : (dict?.downloader?.download || 'Download')}
             </button>
           </div>
-          <button 
-            type="submit" 
-            className="download-btn" 
-            disabled={loading}
-          >
-            {loading ? (
-              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            ) : (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-            )}
-            {loading ? 'Processing...' : dict.downloader.download}
-          </button>
         </form>
 
         {result && (
@@ -186,18 +192,17 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
             <ResultCard data={result} onRetry={() => setResult(null)} />
           </div>
         )}
-
-        </div>
+      </div>
       </main>
       </div>
 
       {(activeTab === 'video' || activeTab === 'reel') && (
         <>
-          <section className="container" style={{ padding: '3rem 1rem', maxWidth: '900px', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
+          <section className="container" style={{ padding: '3.5rem 1rem', maxWidth: '1000px', margin: '0 auto' }}>
+        <h2 style={{ fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
           {title}
         </h2>
-        <div style={{ color: '#555', lineHeight: '1.7', fontSize: '1.05rem', display: 'flex', flexDirection: 'column', gap: '1.2rem', textAlign: 'justify', maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ color: '#555', lineHeight: '1.7', display: 'flex', flexDirection: 'column', gap: '1.2rem', textAlign: 'justify', maxWidth: '800px', margin: '0 auto' }}>
           {activeTab === 'reel' && (
             <>
               {dict.informationalContent?.reels_p1 && (
@@ -222,14 +227,14 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
         </div>
 
         <div style={{ textAlign: 'center', margin: '4rem 0 3rem' }}>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1a1a2e', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+          <h2 style={{ fontWeight: 'bold', color: '#1a1a2e', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
              
             {activeTab === 'reel' 
               ? (dict.informationalContent?.reelsHowItWorksTitle || dict.informationalContent?.howItWorksTitle || 'How it works')
               : (dict.informationalContent?.howItWorksTitle || 'How it works')}
             
           </h2>
-          <p style={{ color: '#64748b', fontSize: '1.1rem', marginTop: '0.5rem', maxWidth: '800px', margin: '0.5rem auto 0' }}>
+          <p style={{ color: '#64748b', marginTop: '0.5rem', maxWidth: '800px', margin: '0.5rem auto 0' }}>
             {activeTab === 'reel'
               ? (dict.informationalContent?.reelsHowItWorksSubtitle || dict.informationalContent?.howItWorksSubtitle || 'Download in just 3 simple steps')
               : (dict.informationalContent?.howItWorksSubtitle || 'Download in just 3 simple steps')}
@@ -267,7 +272,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
           })}
         </div>
 
-        <h2 style={{ fontSize: '2.2rem', fontWeight: 'bold', margin: '4rem 0 2rem', textAlign: 'center', color: '#333' }}>
+        <h2 style={{ fontWeight: 'bold', margin: '4rem 0 2rem', textAlign: 'center', color: '#333' }}>
           {activeTab === 'reel' 
             ? (dict.informationalContent?.reelsWhyUseTitle || dict.informationalContent?.whyUseTitle)
             : activeTab === 'photo'
@@ -325,8 +330,8 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
       </section>
 
 
-      <section className="container" style={{ padding: '4rem 1rem', maxWidth: '1200px', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '2.2rem', fontWeight: 'bold', margin: '0 0 2.5rem', textAlign: 'center', color: '#333' }}>
+      <section className="container" style={{ padding: '3.5rem 1rem', maxWidth: '1000px', margin: '0 auto' }}>
+        <h2 style={{ fontWeight: 'bold', margin: '0 0 2.5rem', textAlign: 'center', color: '#333' }}>
           {activeTab === 'reel' 
             ? (dict.informationalContent?.reelsFeaturesTitle || "Features of InstaDown Instagram Reels Downloader")
             : (dict.informationalContent?.featuresTitle || "Features of InstaDown")}
@@ -407,11 +412,11 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
       )}
 
       {activeTab === 'photo' && dict.informationalContent?.photoInfoTitle && (
-        <section className="container" style={{ padding: '3rem 1rem', maxWidth: '900px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
+        <section className="container" style={{ padding: '3.5rem 1rem', maxWidth: '1000px', margin: '0 auto' }}>
+          <h2 style={{ fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
             {dict.informationalContent.photoInfoTitle}
           </h2>
-          <div style={{ color: '#555', lineHeight: '1.7', fontSize: '1.05rem', display: 'flex', flexDirection: 'column', gap: '1.2rem', textAlign: 'justify', maxWidth: '800px', margin: '0 auto' }}>
+          <div style={{ color: '#555', lineHeight: '1.7', display: 'flex', flexDirection: 'column', gap: '1.2rem', textAlign: 'justify', maxWidth: '800px', margin: '0 auto' }}>
             {dict.informationalContent.photoInfoParagraphs?.map((paragraph: string, index: number) => (
               <p key={index} style={{ margin: 0 }}>
                 {paragraph}
@@ -422,12 +427,12 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
           {dict.informationalContent?.photoHowItWorksTitle && dict.informationalContent?.photoHowItWorksList && (
             <div style={{ marginTop: '4rem' }}>
               <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1a1a2e', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+                <h2 style={{ fontWeight: 'bold', color: '#1a1a2e', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
                    
                   {dict.informationalContent.photoHowItWorksTitle}
                   
                 </h2>
-                <p style={{ color: '#64748b', fontSize: '1.1rem', marginTop: '0.5rem', maxWidth: '800px', margin: '0.5rem auto 0' }}>
+                <p style={{ color: '#64748b', marginTop: '0.5rem', maxWidth: '800px', margin: '0.5rem auto 0' }}>
                   Download in just 3 simple steps
                 </p>
               </div>
@@ -452,13 +457,9 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                           {idx + 1}
                         </div>
                       </div>
-                      <div className="how-it-works-text">
-                        <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem', color: '#1e293b' }}>
-                          {step.title}
-                        </h3>
-                        <p style={{ color: '#64748b', lineHeight: '1.6', margin: 0 }}>
-                          {step.desc}
-                        </p>
+                      <div>
+                        <h3>{step.title}</h3>
+                        <p>{step.desc}</p>
                       </div>
                     </article>
                   );
@@ -469,7 +470,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
 
           {dict.informationalContent?.photoWhyUseTitle && dict.informationalContent?.photoWhyUseReasons && (
             <div style={{ marginTop: '5rem' }}>
-              <h2 style={{ fontSize: '2.2rem', fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
+              <h2 style={{ fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
                 {dict.informationalContent.photoWhyUseTitle}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '800px', margin: '0 auto' }}>
@@ -496,7 +497,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
 
           {dict.informationalContent?.photoFeaturesTitle && dict.informationalContent?.photoFeaturesList && (
             <div style={{ marginTop: '5rem', marginBottom: '2rem' }}>
-              <h2 style={{ fontSize: '2.2rem', fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
+              <h2 style={{ fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
                 {dict.informationalContent.photoFeaturesTitle}
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
@@ -540,8 +541,8 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                       {card.icon}
                     </div>
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                      <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: card.color, textAlign: 'center' }}>{card.title}</h3>
-                      <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5', margin: 0, textAlign: 'center' }}>
+                      <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: card.color, textAlign: 'center' }}>{card.title}</h3>
+                      <p style={{ color: '#64748b', lineHeight: '1.5', margin: 0, textAlign: 'center' }}>
                         {card.desc}
                       </p>
                     </div>
@@ -557,11 +558,11 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
 
 
       {activeTab === 'profile' && dict.informationalContent?.profileInfoTitle && (
-        <section className="container" style={{ padding: '3rem 1rem', maxWidth: '900px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
+        <section className="container" style={{ padding: '3.5rem 1rem', maxWidth: '1000px', margin: '0 auto' }}>
+          <h2 style={{ fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
             {dict.informationalContent.profileInfoTitle}
           </h2>
-          <div style={{ color: '#555', lineHeight: '1.7', fontSize: '1.05rem', display: 'flex', flexDirection: 'column', gap: '1.2rem', textAlign: 'justify', maxWidth: '800px', margin: '0 auto' }}>
+          <div style={{ color: '#555', lineHeight: '1.7', display: 'flex', flexDirection: 'column', gap: '1.2rem', textAlign: 'justify', maxWidth: '800px', margin: '0 auto' }}>
             {dict.informationalContent.profileInfoParagraphs?.map((paragraph: string, index: number) => (
               <p key={index} style={{ margin: 0 }}>
                 {paragraph}
@@ -572,12 +573,12 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
           {dict.informationalContent?.profileHowItWorksTitle && dict.informationalContent?.profileHowItWorksList && (
             <div style={{ marginTop: '4rem' }}>
               <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1a1a2e', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+                <h2 style={{ fontWeight: 'bold', color: '#1a1a2e', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
                    
                   {dict.informationalContent.profileHowItWorksTitle}
                   
                 </h2>
-                <p style={{ color: '#64748b', fontSize: '1.1rem', marginTop: '0.5rem', maxWidth: '800px', margin: '0.5rem auto 0' }}>
+                <p style={{ color: '#64748b', marginTop: '0.5rem', maxWidth: '800px', margin: '0.5rem auto 0' }}>
                   Download in just 3 simple steps
                 </p>
               </div>
@@ -602,13 +603,9 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                           {idx + 1}
                         </div>
                       </div>
-                      <div className="how-it-works-text">
-                        <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem', color: '#1e293b' }}>
-                          {step.title}
-                        </h3>
-                        <p style={{ color: '#64748b', lineHeight: '1.6', margin: 0 }}>
-                          {step.desc}
-                        </p>
+                      <div>
+                        <h3>{step.title}</h3>
+                        <p>{step.desc}</p>
                       </div>
                     </article>
                   );
@@ -619,7 +616,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
 
           {dict.informationalContent?.profileWhyUseTitle && dict.informationalContent?.profileWhyUseReasons && (
             <div style={{ marginTop: '5rem' }}>
-              <h2 style={{ fontSize: '2.2rem', fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
+              <h2 style={{ fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
                 {dict.informationalContent.profileWhyUseTitle}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '800px', margin: '0 auto' }}>
@@ -646,7 +643,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
 
           {dict.informationalContent?.profileFeaturesTitle && dict.informationalContent?.profileFeaturesList && (
             <div style={{ marginTop: '5rem', marginBottom: '2rem' }}>
-              <h2 style={{ fontSize: '2.2rem', fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
+              <h2 style={{ fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
                 {dict.informationalContent.profileFeaturesTitle}
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
@@ -661,7 +658,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                   {
                     title: dict.informationalContent.profileFeaturesList[1]?.title || dict.tabs?.reel || "Reels",
                     desc: dict.informationalContent.profileFeaturesList[1]?.desc,
-                    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>,
+                    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>,
                     bg: "linear-gradient(135deg, #f472b6, #db2777)",
                     color: "#db2777"
                   },
@@ -690,8 +687,8 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
                       {card.icon}
                     </div>
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                      <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: card.color, textAlign: 'center' }}>{card.title}</h3>
-                      <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5', margin: 0, textAlign: 'center' }}>
+                      <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: card.color, textAlign: 'center' }}>{card.title}</h3>
+                      <p style={{ color: '#64748b', lineHeight: '1.5', margin: 0, textAlign: 'center' }}>
                         {card.desc}
                       </p>
                     </div>

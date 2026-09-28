@@ -6,14 +6,10 @@ interface FAQProps {
 }
 
 export default function FAQ({ items }: FAQProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null); // No items open by default
+  const [openIndex, setOpenIndex] = useState<number | null>(0); // First item open by default
   
   // Use passed items or fallback to empty array
   const faqsToDisplay = items || [];
-
-  const toggleFaq = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -29,13 +25,13 @@ export default function FAQ({ items }: FAQProps) {
   };
 
   return (
-    <section className="container" style={{ padding: '3rem 1rem', maxWidth: '900px', margin: '0 auto', marginBottom: '4rem' }}>
+    <section className="container" style={{ padding: '3.5rem 1rem', maxWidth: '1000px', margin: '0 auto', marginBottom: '4rem' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', margin: '0 0 3rem', textAlign: 'center', color: '#111' }}>
+      <h2 style={{ fontWeight: 'bold', margin: '0 0 2.5rem', textAlign: 'center', color: '#111' }}>
         Frequently Asked Questions (FAQs)
       </h2>
       
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         {faqsToDisplay.map((faq, index) => {
           const isOpen = openIndex === index;
           return (
@@ -52,52 +48,48 @@ export default function FAQ({ items }: FAQProps) {
               }}
               style={{ 
                 backgroundColor: '#fff', 
-                border: '2px solid #eaeaea',
-                borderRadius: '10px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                overflow: 'hidden'
+                border: '1.5px solid #ba9bd1',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                boxShadow: '0 4px 12px rgba(167, 123, 184, 0.08)'
               }}
             >
               <summary 
                 style={{ 
                   width: '100%',
                   textAlign: 'left',
-                  padding: '1.25rem 1.5rem', 
+                  padding: '1rem 1.5rem', 
                   cursor: 'pointer',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   outline: 'none',
-                  listStyle: 'none', // Hides default arrow in many browsers
-                  fontWeight: 'bold',
-                  fontSize: '1.15rem',
-                  color: '#222'
+                  listStyle: 'none',
+                  fontWeight: '700',
+                  fontSize: '1.05rem',
+                  backgroundColor: '#a77bb8',
+                  color: '#ffffff',
+                  userSelect: 'none',
+                  transition: 'background-color 0.2s'
                 }}
               >
-                <span style={{ margin: 0, display: 'block', paddingRight: '1rem' }}>
+                <span style={{ margin: 0, display: 'block', paddingRight: '1rem', color: '#ffffff' }}>
                   {faq.question}
                 </span>
-                <span style={{ color: '#555', flexShrink: 0, display: 'block' }}>
-                  <svg 
-                    className="faq-icon"
-                    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-                    strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                  >
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
+                <span style={{ color: '#ffffff', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', fontWeight: '400', width: '24px', height: '24px', lineHeight: '1' }}>
+                  {isOpen ? '−' : '+'}
                 </span>
               </summary>
               
               <div 
                 style={{ 
-                  padding: '0 1.5rem 1.5rem',
-                  color: '#555',
-                  lineHeight: '1.7',
-                  fontSize: '1.05rem',
-                  borderTop: '1px solid #eaeaea'
+                  padding: '1.25rem 1.5rem',
+                  color: '#475569',
+                  lineHeight: '1.6',
+                  backgroundColor: '#ffffff'
                 }}
               >
-                <p style={{ margin: 0 }}>
+                <p style={{ margin: 0, color: '#475569' }}>
                   {faq.answer}
                 </p>
               </div>
@@ -109,23 +101,21 @@ export default function FAQ({ items }: FAQProps) {
         details > summary::-webkit-details-marker {
           display: none;
         }
+        details summary::-webkit-details-marker {
+          display: none;
+        }
         details[open] summary ~ div {
-          animation: faq-slide-down 0.3s ease-in-out;
-        }
-        details[open] summary .faq-icon {
-          transform: rotate(180deg);
-          transition: transform 0.3s ease;
-        }
-        details:not([open]) summary .faq-icon {
-          transform: rotate(0deg);
-          transition: transform 0.3s ease;
+          animation: faq-slide-down 0.25s ease-in-out;
         }
         @keyframes faq-slide-down {
-          0% { opacity: 0; transform: translateY(-10px); }
+          0% { opacity: 0; transform: translateY(-6px); }
           100% { opacity: 1; transform: translateY(0); }
         }
         details[open] {
-          border-color: #3b82f6 !important;
+          border-color: #a77bb8 !important;
+        }
+        summary:hover {
+          background-color: #996cb0 !important;
         }
       `}} />
     </section>

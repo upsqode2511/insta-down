@@ -114,12 +114,12 @@ export default async function RootLayout({
 
 
 
-        <footer className="footer" style={{ backgroundColor: '#1a1a1a', color: '#f5f5f5', padding: '2rem 1rem' }}>
-          <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2rem', flexWrap: 'wrap', fontSize: '0.95rem' }}>
-            <a href={`${prefix}/contact`} className="footer-link">Contact</a>
-            <a href={`${prefix}/about`} className="footer-link">About</a>
-            <a href={`${prefix}/terms`} className="footer-link">Terms of Service</a>
-            <a href={`${prefix}/privacy`} className="footer-link">Privacy Policy</a>
+        <footer className="footer" style={{ backgroundColor: '#1a1a1a', color: '#f5f5f5', padding: '2.5rem 1rem 2rem', marginTop: 'auto' }}>
+          <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2rem', flexWrap: 'wrap', fontSize: '0.95rem', fontWeight: '500' }}>
+            <a href={`${prefix}/about-us/`} className="footer-link">About Us</a>
+            <a href={`${prefix}/contact-us/`} className="footer-link">Contact Us</a>
+            <a href={`${prefix}/privacy-policy/`} className="footer-link">Privacy Policy</a>
+            <a href={`${prefix}/terms-of-service/`} className="footer-link">Terms of Service</a>
           </div>
           <div className="container" style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '0.85rem', color: '#888' }}>
             <p>&copy; {new Date().getFullYear()} InstaDownload. This tool is not affiliated with Instagram.</p>
