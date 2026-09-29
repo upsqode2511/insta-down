@@ -15,8 +15,8 @@ export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'stor
   switch (pageType) {
     case 'video':
       slug = "";
-      title = lang === 'en' ? "Instagram Profile Picture Downloader in HD - Instadown" : dict.pages.videoTitle;
-      description = lang === 'en' ? "Download Instagram profile pictures using a free and fast online web-based tool. 'Insta Profile Viewer' is a 100% free and the best Instagram profile downloader." : dict.pages.videoSubtitle;
+      title = lang === 'en' ? "Instagram Downloader" : dict.pages.videoTitle;
+      description = lang === 'en' ? "Download Instagram videos, reels, photos and profile pictures in high quality, fast and for free." : dict.pages.videoSubtitle;
       break;
     case 'photo':
       slug = "instagram-photo-downloader";
@@ -25,13 +25,13 @@ export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'stor
       break;
     case 'story':
       slug = "instagram-story-downloader";
-      title = dict.pages.storyTitle;
-      description = dict.pages.storySubtitle;
+      title = lang === 'en' ? "Instagram Story Downloader - Save Stories & Highlights - Instadown" : dict.pages.storyTitle;
+      description = lang === 'en' ? "Download Instagram Stories and Highlights anonymously in HD quality for free with Instadown Story Downloader." : dict.pages.storySubtitle;
       break;
     case 'reel':
       slug = "instagram-reels-downloader";
-      title = lang === 'en' ? "Instagram Reels Downloader" : dict.pages.reelsTitle;
-      description = lang === 'en' ? "InstaDown is the ultimate Instagram Reels Downloader allowing you to download Instagram Reels without a watermark quickly and easily." : dict.pages.reelsSubtitle;
+      title = lang === 'en' ? "Instagram Reels Downloader in HD | InstaDown" : dict.pages.reelsTitle;
+      description = lang === 'en' ? "Instagram Reels Downloader allows you to download Reels easily and for free in high quality on Android and iPhone. No login, software, or watermark is required." : dict.pages.reelsSubtitle;
       break;
     case 'profile':
       slug = "instagram-profile-downloader";

@@ -73,20 +73,20 @@ const dictionaries: Record<string, Dictionary> = {
       "video": "Video",
       "photo": "Photo",
       "story": "Story",
-      "reel": "Reel",
+      "reel": "Reels",
       "profile": "Profile"
 },
     pages: {
       "videoTitle": "Instagram Video Downloader",
-      "videoSubtitle": "Download Instagram Videos, Photos, Reels, Stories online with ease",
+      "videoSubtitle": "Download Instagram videos, reels, photos and profile pictures in high quality, fast and for free.",
       "photoTitle": "Instagram Photo Downloader",
-      "photoSubtitle": "Easily obtain Instagram photos",
-      "reelsTitle": "Instagram Reels Downloader HD",
-      "reelsSubtitle": "Download Instagram Reels videos in high quality MP4 format",
+      "photoSubtitle": "The best tool for downloading images from Instagram. Download photos from Instagram quickly, for free, and anonymously using the Instadown photo downloader.",
+      "reelsTitle": "Instagram Reels Downloader",
+      "reelsSubtitle": "InstaDown is the ultimate Instagram Reels Downloader allowing you to download Instagram Reels without a watermark quickly and easily.",
       "storyTitle": "Instagram Story Downloader",
       "storySubtitle": "Download Instagram Stories and Highlights anonymously and for free",
       "profileTitle": "Instagram Profile Downloader",
-      "profileSubtitle": "View and download Instagram profile pictures in full resolution"
+      "profileSubtitle": "Download Instagram profile pictures using a free and fast online tool. This is a quick, free profile photo downloader that adds no watermarks."
 },
     informationalContent: {
       "p1": "InstaDown is a simple and free Instagram video downloader designed to help you save Instagram videos quickly and easily. Whether you want to download Instagram video for offline viewing or save a video you like, Insta Downloader makes the process easy.",
