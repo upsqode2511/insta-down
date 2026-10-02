@@ -1,18 +1,43 @@
-<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="instaGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stopColor="#ff9800"/>
-      <stop offset="50%" stopColor="#e91e63"/>
-      <stop offset="100%" stopColor="#9b27b0"/>
+    <!-- Squircle Gradient -->
+    <linearGradient id="iconInstaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#6D28D9" />
+      <stop offset="20%" stopColor="#9333EA" />
+      <stop offset="45%" stopColor="#DB2777" />
+      <stop offset="80%" stopColor="#E11D48" />
+      <stop offset="100%" stopColor="#C026D3" />
     </linearGradient>
-    <linearGradient id="circleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stopColor="#4a00e0"/>
-      <stop offset="100%" stopColor="#8e2de2"/>
-    </linearGradient>
+
+    <!-- Center lens deep purple gradient -->
+    <radialGradient id="iconLensRadial" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#4C1D95" />
+      <stop offset="70%" stopColor="#310D60" />
+      <stop offset="100%" stopColor="#1E0038" />
+    </radialGradient>
   </defs>
-  <rect x="5" y="5" width="90" height="90" rx="25" fill="url(#instaGrad)"/>
-  <rect x="22" y="22" width="56" height="56" rx="14" fill="none" stroke="white" stroke-width="8"/>
-  <circle cx="65" cy="35" r="5" fill="white"/>
-  <circle cx="50" cy="50" r="18" fill="url(#circleGrad)"/>
-  <path d="M50 40 V50 M44 44 L50 50 L56 44 M40 54 V58 C40 59.1 40.9 60 42 60 H58 C59.1 60 60 59.1 60 58 V54" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Outer Squircle -->
+  <rect x="5" y="5" width="100" height="100" rx="27" ry="27" fill="url(#iconInstaBg)" />
+
+  <!-- Camera Outer Rounded Square White Frame -->
+  <rect x="18" y="18" width="74" height="74" rx="20" ry="20" fill="none" stroke="#FFFFFF" stroke-width="6.5" />
+
+  <!-- Camera Top-Right White Dot -->
+  <circle cx="74" cy="34" r="4.2" fill="#FFFFFF" />
+
+  <!-- Camera Center White Outer Ring -->
+  <circle cx="55" cy="55" r="21.5" fill="none" stroke="#FFFFFF" stroke-width="6" />
+
+  <!-- Center Dark Purple Lens Circle -->
+  <circle cx="55" cy="55" r="16.5" fill="url(#iconLensRadial)" />
+
+  <!-- Solid White Download Arrow -->
+  <path d="M48.5 39 H61.5 V52 H71 L55 67 L39 52 H48.5 V39 Z" fill="#FFFFFF" />
+
+  <!-- Tray Outer Purple Accent / Glow -->
+  <path d="M34.5 61 V72.5 C34.5 80 39.5 84.5 47 84.5 H63 C70.5 84.5 75.5 80 75.5 72.5 V61" fill="none" stroke="#7C3AED" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Tray Solid White Core -->
+  <path d="M35 61 V72 C35 78.5 39.5 82.5 47 82.5 H63 C70.5 82.5 75 78.5 75 72 V61" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
 </svg>

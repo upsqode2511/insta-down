@@ -74,6 +74,9 @@ export default async function RootLayout({
       lang={resolvedParams.lang || "en"}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+      </head>
       <body className="min-h-full flex flex-col">
         <Header dict={dict} prefix={prefix} currentLang={resolvedParams.lang} />
 
@@ -81,15 +84,17 @@ export default async function RootLayout({
 
 
 
-        <footer className="footer" style={{ backgroundColor: '#1a1a1a', color: '#f5f5f5', padding: '2.5rem 1rem 2rem', marginTop: 'auto' }}>
-          <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2rem', flexWrap: 'wrap', fontSize: '0.95rem', fontWeight: '500' }}>
-            <a href={`${prefix}/about-us/`} className="footer-link">About Us</a>
-            <a href={`${prefix}/contact-us/`} className="footer-link">Contact Us</a>
-            <a href={`${prefix}/privacy-policy/`} className="footer-link">Privacy Policy</a>
-            <a href={`${prefix}/terms-of-service/`} className="footer-link">Terms of Service</a>
-          </div>
-          <div className="container" style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '0.85rem', color: '#888' }}>
-            <p>&copy; {new Date().getFullYear()} InstaDownload. This tool is not affiliated with Instagram.</p>
+        <footer className="site-footer">
+          <div className="container">
+            <nav className="footer-nav" aria-label="Footer navigation">
+              <a href={`${prefix}/about-us/`} className="footer-link">About Us</a>
+              <a href={`${prefix}/contact-us/`} className="footer-link">Contact Us</a>
+              <a href={`${prefix}/privacy-policy/`} className="footer-link">Privacy Policy</a>
+              <a href={`${prefix}/terms-of-service/`} className="footer-link">Terms of Service</a>
+            </nav>
+            <div className="footer-copyright">
+              <p>&copy; {new Date().getFullYear()} InstaDownload. This tool is not affiliated with Instagram.</p>
+            </div>
           </div>
         </footer>
       </body>

@@ -26,23 +26,35 @@ type ResultCardProps = {
 export default function ResultCard({ data, onRetry }: ResultCardProps) {
   if (data.error || (!data.type && !data.medias)) {
     return (
-      <div className="error-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-        <div style={{ backgroundColor: '#fee2e2', borderRadius: '50%', padding: '1rem', color: '#ef4444', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <div className="error-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.25rem', backgroundColor: '#ffffff', borderRadius: '16px', padding: '2.5rem 2rem', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)', maxWidth: '420px', width: '100%', margin: '0 auto', textAlign: 'center', border: '1px solid #fee2e2' }}>
+        <div style={{ backgroundColor: '#fee2e2', borderRadius: '50%', width: '64px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="15" y1="9" x2="9" y2="15"></line>
             <line x1="9" y1="9" x2="15" y2="15"></line>
           </svg>
         </div>
-        <div style={{ textAlign: 'center' }}>
-          <p style={{ fontWeight: 600, fontSize: '1.2rem', color: '#1f2937', margin: 0 }}>Failed to fetch details</p>
-          <p style={{ fontSize: '0.95rem', color: '#6b7280', margin: '0.4rem 0 0 0' }}>{data.message || 'Please check the URL and try again.'}</p>
+        <div>
+          <h3 style={{ fontWeight: '700', fontSize: '1.2rem', color: '#111827', margin: 0 }}>
+            Failed to fetch details
+          </h3>
         </div>
         {onRetry && (
           <button 
             onClick={onRetry}
-            className="btn-primary"
-            style={{ width: 'auto', padding: '0.6rem 2rem', marginTop: '0.5rem' }}
+            className="try-again-btn"
+            style={{ 
+              backgroundColor: '#3b82f6', 
+              color: '#ffffff', 
+              padding: '0.65rem 2.25rem', 
+              borderRadius: '8px', 
+              fontWeight: '600', 
+              fontSize: '0.95rem',
+              border: 'none', 
+              cursor: 'pointer',
+              boxShadow: '0 2px 6px rgba(59, 130, 246, 0.3)',
+              transition: 'background-color 0.2s ease, transform 0.1s ease'
+            }}
           >
             Try Again
           </button>

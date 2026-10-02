@@ -54,7 +54,7 @@ export async function POST(request: Request) {
     if (!data.type && !data.medias && !data.error) {
       data.error = true;
       if (!data.message) {
-        data.message = 'Unable to fetch media from this link. Please check if the post is public and try again.';
+        data.message = 'Media not found or unable to download';
       }
     }
 
