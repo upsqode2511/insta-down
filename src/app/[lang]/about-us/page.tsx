@@ -10,7 +10,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function AboutUsPage() {
   return (
-    <main className="container" style={{ padding: '3.5rem 1rem 5rem', maxWidth: '900px', margin: '0 auto', flex: 1 }}>
+    <>
+      <meta itemProp="name" content="About Us - InstaDown" />
+      <meta itemProp="description" content="Learn more about InstaDown, your trusted online Instagram downloader tool for videos, photos, reels, and profile pictures." />
+      <main className="container" style={{ padding: '3.5rem 1rem 5rem', maxWidth: '900px', margin: '0 auto', flex: 1 }}>
       <h1 style={{ fontWeight: '800', marginBottom: '1.5rem', textAlign: 'left', color: '#0f172a' }}>
         About Us
       </h1>
@@ -49,5 +52,6 @@ export default function AboutUsPage() {
         </p>
       </section>
     </main>
+    </>
   );
 }

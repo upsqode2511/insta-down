@@ -1,6 +1,6 @@
 import Downloader from "@/components/Downloader";
 import { getDictionary } from "@/dictionaries";
-import { getSEOMetadata } from "@/lib/seo";
+import { getSEOMetadata, getSEOMetaDataValues } from "@/lib/seo";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -11,6 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
   const resolvedParams = await params;
   const dict = getDictionary(resolvedParams.lang);
+  const { title: metaTitle, description: metaDescription } = getSEOMetaDataValues(resolvedParams.lang, "profile");
 
   return (
     <Downloader 
@@ -19,6 +20,8 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       activeTab="profile"
       title={dict.pages.profileTitle}
       subtitle={dict.pages.profileSubtitle}
+      metaTitle={metaTitle}
+      metaDescription={metaDescription}
     />
   );
 }

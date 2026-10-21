@@ -10,7 +10,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function TermsOfServicePage() {
   return (
-    <main className="container" style={{ padding: '3.5rem 1rem 5rem', maxWidth: '900px', margin: '0 auto', flex: 1 }}>
+    <>
+      <meta itemProp="name" content="Terms of Service - InstaDown" />
+      <meta itemProp="description" content="InstaDown Terms of Service and usage conditions." />
+      <main className="container" style={{ padding: '3.5rem 1rem 5rem', maxWidth: '900px', margin: '0 auto', flex: 1 }}>
       <h1 style={{ fontWeight: '800', marginBottom: '1.5rem', textAlign: 'left', color: '#0f172a' }}>
         Terms of Service
       </h1>
@@ -68,5 +71,6 @@ export default function TermsOfServicePage() {
         </p>
       </section>
     </main>
+    </>
   );
 }

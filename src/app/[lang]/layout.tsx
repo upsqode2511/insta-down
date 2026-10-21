@@ -48,6 +48,10 @@ export const metadata: Metadata = {
     description: "Download photos, videos, and reels quickly and safely with Insta Download.",
     images: ['https://instadownload.example.com/og-image.jpg'],
   },
+  other: {
+    'itemprop:name': "Insta Download - Fast & Free Media Downloader",
+    'itemprop:description': "Download photos, videos, and reels quickly and safely with Insta Download.",
+  },
   robots: {
     index: false,
     follow: false,
@@ -93,7 +97,7 @@ export default async function RootLayout({
               <a href={`${prefix}/terms-of-service/`} className="footer-link">Terms of Service</a>
             </nav>
             <div className="footer-copyright">
-              <p>&copy; {new Date().getFullYear()} InstaDownload. This tool is not affiliated with Instagram.</p>
+              <p>&copy; 2026 InstaDown to All rights Reserved</p>
             </div>
           </div>
         </footer>

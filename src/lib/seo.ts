@@ -4,7 +4,7 @@ import { getDictionary } from "@/dictionaries";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://instadownload.example.com";
 const locales = ['en', 'id', 'de', 'it', 'ja', 'es', 'hi', 'fr', 'tr', 'pt', 'pl', 'ar', 'th', 'hu', 'ms', 'zh', 'ro', 'ru', 'vi'];
 
-export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'story' | 'reel' | 'profile'): Metadata {
+export function getSEOMetaDataValues(lang: string, pageType: 'video' | 'photo' | 'story' | 'reel' | 'profile') {
   const dict = getDictionary(lang);
   
   // Define slug based on page type
@@ -39,6 +39,12 @@ export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'stor
       description = lang === 'en' ? "Download Instagram profile pictures using a free and fast online web-based tool. 'Insta Profile Viewer' is a 100% free and the best Instagram profile downloader." : dict.pages.profileSubtitle;
       break;
   }
+
+  return { slug, title, description };
+}
+
+export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'story' | 'reel' | 'profile'): Metadata {
+  const { slug, title, description } = getSEOMetaDataValues(lang, pageType);
   
   const getUrl = (locale: string) => {
     const localePath = locale === 'en' ? '' : `/${locale}`;
@@ -66,6 +72,10 @@ export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'stor
       card: "summary_large_image",
       title,
       description,
+    },
+    other: {
+      'itemprop:name': title,
+      'itemprop:description': description,
     },
     robots: {
       index: false,

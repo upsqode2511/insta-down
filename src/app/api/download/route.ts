@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
-      return NextResponse.json({ error: true, message: `API responded with status: ${response.status}` }, { status: response.status });
+      return NextResponse.json({ error: true, message: 'Failed to fetch Instagram user info.' }, { status: response.status });
     }
 
     let data = await response.json();
@@ -54,14 +54,14 @@ export async function POST(request: Request) {
     if (!data.type && !data.medias && !data.error) {
       data.error = true;
       if (!data.message) {
-        data.message = 'Media not found or unable to download';
+        data.message = 'Failed to fetch Instagram user info.';
       }
     }
 
     return NextResponse.json(data);
   } catch (error: any) {
     console.error('Error fetching Instagram data:', error);
-    return NextResponse.json({ error: true, message: error.message || 'Failed to fetch data' }, { status: 500 });
+    return NextResponse.json({ error: true, message: error.message || 'Failed to fetch Instagram user info.' }, { status: 500 });
   }
 }
 

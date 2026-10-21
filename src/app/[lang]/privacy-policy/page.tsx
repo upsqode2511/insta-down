@@ -10,7 +10,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="container" style={{ padding: '3.5rem 1rem 5rem', maxWidth: '900px', margin: '0 auto', flex: 1 }}>
+    <>
+      <meta itemProp="name" content="Privacy Policy - InstaDown" />
+      <meta itemProp="description" content="InstaDown Privacy Policy outlining data collection, security, and user rights." />
+      <main className="container" style={{ padding: '3.5rem 1rem 5rem', maxWidth: '900px', margin: '0 auto', flex: 1 }}>
       <h1 style={{ fontWeight: '800', marginBottom: '1.5rem', textAlign: 'left', color: '#0f172a' }}>
         Privacy Policy
       </h1>
@@ -68,5 +71,6 @@ export default function PrivacyPolicyPage() {
         </p>
       </section>
     </main>
+    </>
   );
 }

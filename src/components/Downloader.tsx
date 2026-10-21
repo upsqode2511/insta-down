@@ -11,6 +11,8 @@ type DownloaderProps = {
   title: string;
   subtitle: string;
   dict: Dictionary;
+  metaTitle?: string;
+  metaDescription?: string;
 };
 
 function renderReasonContent(text?: string) {
@@ -41,7 +43,7 @@ function renderReasonContent(text?: string) {
   );
 }
 
-export default function Downloader({ lang, activeTab, title, subtitle, dict }: DownloaderProps) {
+export default function Downloader({ lang, activeTab, title, subtitle, dict, metaTitle, metaDescription }: DownloaderProps) {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<any>(null);
@@ -85,7 +87,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
       setResult(data);
     } catch (error: any) {
       console.error(error);
-      setResult({ error: true, message: error.message || 'Failed to fetch data' });
+      setResult({ error: true, message: error.message || 'Failed to fetch Instagram user info.' });
     } finally {
       setLoading(false);
     }
@@ -112,6 +114,8 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
 
   return (
     <>
+      <meta itemProp="name" content={metaTitle || title} />
+      <meta itemProp="description" content={metaDescription || subtitle} />
       <div className="hero-gradient-wrapper">
         <main className="container hero">
           <h1 className="hero-title">
@@ -190,8 +194,14 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
         </form>
 
         {result && (
-          <div ref={resultRef} style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center' }}>
-            <ResultCard data={result} onRetry={() => setResult(null)} />
+          <div ref={resultRef} style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center', width: '100%' }}>
+            <ResultCard 
+              data={result} 
+              onRetry={() => {
+                setResult(null);
+                inputRef.current?.focus();
+              }} 
+            />
           </div>
         )}
       </div>
@@ -274,7 +284,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
           })}
         </div>
 
-        <h2 style={{ fontWeight: 'bold', margin: '4rem 0 2rem', textAlign: 'center', color: '#333' }}>
+        <h3 style={{ fontWeight: 'bold', margin: '4rem 0 2rem', textAlign: 'center', color: '#333' }}>
           {activeTab === 'reel' 
             ? (dict.informationalContent?.reelsWhyUseTitle || dict.informationalContent?.whyUseTitle)
             : activeTab === 'photo'
@@ -284,7 +294,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
             : activeTab === 'story'
             ? (dict.informationalContent?.storyWhyUseTitle || dict.informationalContent?.whyUseTitle)
             : dict.informationalContent?.whyUseTitle}
-        </h2>
+        </h3>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '800px', margin: '0 auto' }}>
           {activeTab === 'reel' ? (
@@ -472,9 +482,9 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
 
           {dict.informationalContent?.photoWhyUseTitle && dict.informationalContent?.photoWhyUseReasons && (
             <div style={{ marginTop: '5rem' }}>
-              <h2 style={{ fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
+              <h3 style={{ fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
                 {dict.informationalContent.photoWhyUseTitle}
-              </h2>
+              </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '800px', margin: '0 auto' }}>
                 {[
                   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 9h5"/><path d="M1 13h5.5"/><path d="M2 17h5"/><circle cx="14.5" cy="13" r="7"/><path d="M13 3.5h3"/><path d="M14.5 3.5v2.5"/><path d="M9.8 7.2l-1.5-1.5"/><path d="M19.2 7.2l1.5-1.5"/><polyline points="14.5 9 14.5 13 17 15.5"/></svg>,
@@ -618,9 +628,9 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
 
           {dict.informationalContent?.profileWhyUseTitle && dict.informationalContent?.profileWhyUseReasons && (
             <div style={{ marginTop: '5rem' }}>
-              <h2 style={{ fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
+              <h3 style={{ fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', color: '#333' }}>
                 {dict.informationalContent.profileWhyUseTitle}
-              </h2>
+              </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '800px', margin: '0 auto' }}>
                 {[
                   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 9h5"/><path d="M1 13h5.5"/><path d="M2 17h5"/><circle cx="14.5" cy="13" r="7"/><path d="M13 3.5h3"/><path d="M14.5 3.5v2.5"/><path d="M9.8 7.2l-1.5-1.5"/><path d="M19.2 7.2l1.5-1.5"/><polyline points="14.5 9 14.5 13 17 15.5"/></svg>,
@@ -702,14 +712,6 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict }: D
 
           <FAQ items={activeTab === 'profile' ? dict.informationalContent?.profileFaqs : activeTab === 'photo' ? dict.informationalContent?.photoFaqs : activeTab === 'reel' ? dict.informationalContent?.reelsFaqs : dict.informationalContent?.videoFaqs} />
         </section>
-      )}
-
-      {result && (
-        <div className="container" style={{ padding: '2rem 1rem' }}>
-          <div className="result-section" style={{ marginTop: '10px' }}>
-            <ResultCard data={result} onRetry={() => setResult(null)} />
-          </div>
-        </div>
       )}
     </>
   );
