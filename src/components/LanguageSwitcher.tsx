@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const languages = [
   { code: 'en', label: 'English' },
@@ -27,6 +27,8 @@ const languages = [
 
 export default function LanguageSwitcher({ currentLang }: { currentLang: string }) {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   
   // Clean the current pathname by removing the current language prefix if it exists
   const getPathWithoutLang = () => {
@@ -39,12 +41,30 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: string 
   };
 
   const basePath = getPathWithoutLang();
-  
   const currentLangLabel = languages.find(l => l.code === currentLang)?.label || 'English';
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="lang-dropdown">
-      <button className="lang-selector">
+    <div className={`lang-dropdown ${isOpen ? 'open' : ''}`} ref={dropdownRef}>
+      <button 
+        type="button" 
+        className="lang-selector" 
+        onClick={() => setIsOpen(prev => !prev)}
+        aria-expanded={isOpen}
+        aria-label="Select language"
+      >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="2" y1="12" x2="22" y2="12"></line>
@@ -71,6 +91,7 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: string 
               key={lang.code} 
               href={href}
               className={lang.code === currentLang ? 'active' : ''}
+              onClick={() => setIsOpen(false)}
             >
               {lang.label}
             </a>

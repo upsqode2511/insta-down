@@ -21,19 +21,6 @@ function getLocalNetworkHosts(): string[] {
 const nextConfig: NextConfig = {
   trailingSlash: true,
   allowedDevOrigins: getLocalNetworkHosts(),
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [
-          {
-            key: "X-Robots-Tag",
-            value: "noindex, nofollow",
-          },
-        ],
-      },
-    ];
-  },
 };
 
 export default nextConfig;

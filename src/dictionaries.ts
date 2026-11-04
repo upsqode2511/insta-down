@@ -77,7 +77,7 @@ const dictionaries: Record<string, Dictionary> = {
       "profile": "Profile"
 },
     pages: {
-      "videoTitle": "Instagram Video Downloader",
+      "videoTitle": "Instagram Downloader",
       "videoSubtitle": "Download Instagram videos, reels, photos and profile pictures in high quality, fast and for free.",
       "photoTitle": "Instagram Photo Downloader",
       "photoSubtitle": "The best tool for downloading images from Instagram. Download photos from Instagram quickly, for free, and anonymously using the Instadown photo downloader.",
@@ -89,6 +89,8 @@ const dictionaries: Record<string, Dictionary> = {
       "profileSubtitle": "Download Instagram profile pictures using a free and fast online tool. This is a quick, free profile photo downloader that adds no watermarks."
 },
     informationalContent: {
+      "videoInfoTitle": "Instagram Video Downloader",
+      "reelsInfoTitle": "Instagram Reels Downloader HD",
       "p1": "InstaDown is a simple and free Instagram video downloader designed to help you save Instagram videos quickly and easily. Whether you want to download Instagram video for offline viewing or save a video you like, Insta Downloader makes the process easy.",
       "p2": "With our Instagram downloader, you can download Instagram videos directly from your browser without complicated steps. There is no need to install additional software or do any login or signup. Simply copy the link of the Instagram video you want to save, paste the URL into InstaDown's search box, and download your video.",
       "p3": "Our service is designed to work on a variety of devices, including smartphones, tablets, laptops, and desktop computers. This makes it easy for you to download Instagram video content whenever you need it.",
@@ -164,7 +166,7 @@ const dictionaries: Record<string, Dictionary> = {
       "featuresTitle": "Features of InstaDown",
       "featuresList": [
             {
-                  "title": "Video and Reel",
+                  "title": "Reels",
                   "desc": "Instagram Reels downloader simplifies the process. This processes the reel URL and provides an available download option. Use this feature only in public and respect copyright and permissions."
             },
             {

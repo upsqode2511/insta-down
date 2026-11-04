@@ -47,9 +47,10 @@ export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'stor
   const { slug, title, description } = getSEOMetaDataValues(lang, pageType);
   
   const getUrl = (locale: string) => {
+    const cleanBase = baseUrl.replace(/\/+$/, '');
     const localePath = locale === 'en' ? '' : `/${locale}`;
     const slugPath = slug ? `/${slug}` : '';
-    return `${baseUrl}${localePath}${slugPath}`;
+    return `${cleanBase}${localePath}${slugPath}/`;
   };
 
   // Build alternates for all locales
@@ -78,11 +79,14 @@ export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'stor
       'itemprop:description': description,
     },
     robots: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
       googleBot: {
-        index: false,
-        follow: false,
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
     alternates: {
