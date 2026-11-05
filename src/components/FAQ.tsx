@@ -74,7 +74,7 @@ export default function FAQ({ items }: FAQProps) {
                   transition: 'background-color 0.2s ease, color 0.2s ease'
                 }}
               >
-                <h3 style={{ margin: 0, display: 'block', paddingRight: '1rem', color: '#3b1854', fontSize: '1.05rem', fontWeight: '700' }}>
+                <h3 style={{ margin: 0, display: 'block', paddingRight: '1rem', color: '#3b1854', fontSize: '22px', fontWeight: '700' }}>
                   {faq.question}
                 </h3>
                 <span 

@@ -97,10 +97,10 @@ export default async function RootLayout({
               <a href={`${prefix}/terms-of-service/`} className="footer-link">Terms of Service</a>
             </nav>
             <div className="footer-copyright">
-              <p style={{ marginBottom: '0.35rem', color: '#9ca3af', fontSize: '0.85rem' }}>
+              <p style={{ marginBottom: '0.35rem', color: '#9ca3af', fontSize: '15px' }}>
                 We are not affiliated with Instagram or Meta.
               </p>
-              <p style={{ margin: 0 }}>&copy; 2026 InstaDown to All rights Reserved</p>
+              <p style={{ margin: 0, fontSize: '15px' }}>&copy; 2026 InstaDown to All rights Reserved</p>
             </div>
           </div>
         </footer>

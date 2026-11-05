@@ -21,9 +21,9 @@ function renderWhyUseList(title?: string, reasons?: string[]) {
 
   return (
     <div className="why-use-section">
-      <h1 className="why-use-title">
+      <h2 className="why-use-title">
         {title}
-      </h1>
+      </h2>
       <div className="why-use-list">
         {reasons.map((item, idx) => {
           if (!item) return null;
@@ -40,9 +40,9 @@ function renderWhyUseList(title?: string, reasons?: string[]) {
 
           return (
             <div key={idx} className="why-use-item">
-              <h3 className="why-use-item-title">
+              <p className="why-use-item-title">
                 {`${idx + 1}. ${itemTitle}`}
-              </h3>
+              </p>
               {itemDesc && (
                 <p className="why-use-item-desc">
                   {itemDesc}
@@ -224,13 +224,13 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
       {(activeTab === 'video' || activeTab === 'reel') && (
         <>
           <section className="container" style={{ padding: '3.5rem 1rem 1rem', maxWidth: '1000px', margin: '0 auto' }}>
-        <h1 style={{ fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
+        <h2 style={{ fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
           {activeTab === 'video'
             ? (dict.informationalContent?.videoInfoTitle || 'Instagram Video Downloader')
             : activeTab === 'reel'
             ? (dict.informationalContent?.reelsInfoTitle || 'Instagram Reels Downloader HD')
             : title}
-        </h1>
+        </h2>
         <div style={{ color: '#555', lineHeight: '1.7', display: 'flex', flexDirection: 'column', gap: '1.2rem', textAlign: 'justify', maxWidth: '800px', margin: '0 auto' }}>
           {activeTab === 'reel' && (
             <>
@@ -293,8 +293,8 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
                   </div>
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.4rem', color: '#1a1a2e' }}>{step.title}</h3>
-                  <p style={{ color: '#64748b', lineHeight: '1.6', fontSize: '1rem', margin: 0 }}>{step.desc}</p>
+                  <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '0.4rem', color: '#1a1a2e' }}>{step.title}</h3>
+                  <p style={{ color: '#64748b', lineHeight: '1.6', fontSize: '15px', margin: 0 }}>{step.desc}</p>
                 </div>
               </article>
             );
@@ -388,8 +388,8 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
                 </div>
               )}
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: card.color, textAlign: 'center' }}>{card.title}</h3>
-                <p style={{ color: '#64748b', lineHeight: '1.6', fontSize: '0.9rem', margin: 0, textAlign: 'center' }}>{card.desc}</p>
+                <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '0.5rem', color: card.color, textAlign: 'center' }}>{card.title}</h3>
+                <p style={{ color: '#64748b', lineHeight: '1.6', fontSize: '15px', margin: 0, textAlign: 'center' }}>{card.desc}</p>
               </div>
             </article>
           ))}
@@ -403,9 +403,9 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
       {activeTab === 'photo' && dict.informationalContent?.photoInfoTitle && (
         <>
           <section className="container" style={{ padding: '3.5rem 1rem 1rem', maxWidth: '1000px', margin: '0 auto' }}>
-          <h1 style={{ fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
+          <h2 style={{ fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
             {dict.informationalContent.photoInfoTitle}
-          </h1>
+          </h2>
           <div style={{ color: '#555', lineHeight: '1.7', display: 'flex', flexDirection: 'column', gap: '1.2rem', textAlign: 'justify', maxWidth: '800px', margin: '0 auto' }}>
             {dict.informationalContent.photoInfoParagraphs?.map((paragraph: string, index: number) => (
               <p key={index} style={{ margin: 0 }}>
@@ -540,9 +540,9 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
       {activeTab === 'profile' && dict.informationalContent?.profileInfoTitle && (
         <>
           <section className="container" style={{ padding: '3.5rem 1rem 1rem', maxWidth: '1000px', margin: '0 auto' }}>
-          <h1 style={{ fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
+          <h2 style={{ fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
             {dict.informationalContent.profileInfoTitle}
-          </h1>
+          </h2>
           <div style={{ color: '#555', lineHeight: '1.7', display: 'flex', flexDirection: 'column', gap: '1.2rem', textAlign: 'justify', maxWidth: '800px', margin: '0 auto' }}>
             {dict.informationalContent.profileInfoParagraphs?.map((paragraph: string, index: number) => (
               <p key={index} style={{ margin: 0 }}>
