@@ -24,8 +24,8 @@ export default function Header({ dict, prefix, currentLang }: { dict: any; prefi
   ];
 
   return (
-    <div className="full-width-header">
-      <header className="container">
+    <header className="full-width-header">
+      <div className="container">
         <div className="header">
           {/* Mobile Hamburger Menu Toggle Button */}
           <button 
@@ -82,7 +82,7 @@ export default function Header({ dict, prefix, currentLang }: { dict: any; prefi
             <LanguageSwitcher currentLang={currentLang} />
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Mobile Dropdown / Sidebar Menu */}
       {isOpen && (
@@ -101,6 +101,6 @@ export default function Header({ dict, prefix, currentLang }: { dict: any; prefi
           </div>
         </nav>
       )}
-    </div>
+    </header>
   );
 }

@@ -126,11 +126,11 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
   };
 
   return (
-    <>
+    <main className="main-content">
       <meta itemProp="name" content={metaTitle || title} />
       <meta itemProp="description" content={metaDescription || subtitle} />
       <div className="hero-gradient-wrapper">
-        <main className="container hero">
+        <div className="container hero">
           <h1 className="hero-title">
             <span>{title}</span>
           </h1>
@@ -218,7 +218,7 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
           </div>
         )}
       </div>
-      </main>
+      </div>
       </div>
 
       {(activeTab === 'video' || activeTab === 'reel') && (
@@ -671,6 +671,6 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
           <FAQ items={activeTab === 'profile' ? dict.informationalContent?.profileFaqs : activeTab === 'photo' ? dict.informationalContent?.photoFaqs : activeTab === 'reel' ? dict.informationalContent?.reelsFaqs : dict.informationalContent?.videoFaqs} />
         </>
       )}
-    </>
+    </main>
   );
 }

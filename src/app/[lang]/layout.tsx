@@ -78,32 +78,29 @@ export default async function RootLayout({
       lang={resolvedParams.lang || "en"}
       className="h-full antialiased"
     >
-      <head>
-        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-      </head>
       <body className="min-h-full flex flex-col">
-        <Header dict={dict} prefix={prefix} currentLang={resolvedParams.lang} />
+        <div id="__next">
+          <Header dict={dict} prefix={prefix} currentLang={resolvedParams.lang} />
 
-        {children}
+          {children}
 
-
-
-        <footer className="site-footer">
-          <div className="container">
-            <nav className="footer-nav" aria-label="Footer navigation">
-              <a href={`${prefix}/about-us/`} className="footer-link">About Us</a>
-              <a href={`${prefix}/contact-us/`} className="footer-link">Contact Us</a>
-              <a href={`${prefix}/privacy-policy/`} className="footer-link">Privacy Policy</a>
-              <a href={`${prefix}/terms-of-service/`} className="footer-link">Terms of Service</a>
-            </nav>
-            <div className="footer-copyright">
-              <p style={{ marginBottom: '0.35rem', color: '#9ca3af', fontSize: '15px' }}>
-                We are not affiliated with Instagram or Meta.
-              </p>
-              <p style={{ margin: 0, fontSize: '15px' }}>&copy; 2026 InstaDown to All rights Reserved</p>
+          <footer className="site-footer">
+            <div className="container">
+              <nav className="footer-nav" aria-label="Footer navigation">
+                <a href={`${prefix}/about-us/`} className="footer-link">About Us</a>
+                <a href={`${prefix}/contact-us/`} className="footer-link">Contact Us</a>
+                <a href={`${prefix}/privacy-policy/`} className="footer-link">Privacy Policy</a>
+                <a href={`${prefix}/terms-of-service/`} className="footer-link">Terms of Service</a>
+              </nav>
+              <div className="footer-copyright">
+                <p style={{ marginBottom: '0.35rem', color: '#9ca3af', fontSize: '15px' }}>
+                  We are not affiliated with Instagram or Meta.
+                </p>
+                <p style={{ margin: 0, fontSize: '15px' }}>&copy; 2026 InstaDown to All rights Reserved</p>
+              </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </div>
       </body>
     </html>
   );
