@@ -28,96 +28,25 @@ export default function ResultCard({ data, onRetry }: ResultCardProps) {
     const errorMessage = data.message || 'Failed to fetch Instagram user info.';
 
     return (
-      <div 
-        className="error-card-wrapper"
-        style={{
-          backgroundColor: '#ffffff',
-          borderRadius: '16px',
-          padding: '1.25rem 1.25rem 0.75rem 1.25rem',
-          width: '100%',
-          maxWidth: '820px',
-          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-          display: 'flex',
-          flexDirection: 'column',
-          boxSizing: 'border-box'
-        }}
-      >
-        <div 
-          className="error-box"
-          style={{
-            backgroundColor: '#fff5f5',
-            border: '1px solid #fca5a5',
-            borderRadius: '8px',
-            padding: '3.5rem 1.5rem',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            textAlign: 'center',
-            width: '100%',
-            boxSizing: 'border-box'
-          }}
-        >
-          <div 
-            style={{ 
-              fontWeight: '700', 
-              fontSize: '1.05rem', 
-              color: '#b91c1c', 
-              margin: '0 0 1.25rem 0',
-              lineHeight: 1.4
-            }}
-          >
+      <div className="error-card-wrapper">
+        <div className="error-box">
+          <div className="error-message">
             {errorMessage}
           </div>
           {onRetry && (
             <button 
               onClick={onRetry}
               className="try-again-btn"
-              style={{ 
-                backgroundColor: '#ffffff', 
-                color: '#b91c1c', 
-                padding: '0.45rem 1.4rem', 
-                borderRadius: '4px', 
-                fontWeight: '500', 
-                fontSize: '0.9rem',
-                border: '1px solid #fca5a5', 
-                cursor: 'pointer',
-                transition: 'all 0.15s ease'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.backgroundColor = '#fff0f0';
-                e.currentTarget.style.borderColor = '#f87171';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.backgroundColor = '#ffffff';
-                e.currentTarget.style.borderColor = '#fca5a5';
-              }}
             >
               Try again
             </button>
           )}
         </div>
         {onRetry && (
-          <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%', marginTop: '0.4rem' }}>
+          <div className="error-close-wrapper">
             <button
               onClick={onRetry}
               className="error-close-btn"
-              style={{
-                background: 'none',
-                border: 'none',
-                color: '#8c9bb0',
-                fontSize: '0.85rem',
-                cursor: 'pointer',
-                padding: '0.2rem 0.25rem',
-                fontFamily: 'inherit',
-                transition: 'color 0.15s ease'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.color = '#475569';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.color = '#8c9bb0';
-              }}
             >
               Close
             </button>
