@@ -1132,7 +1132,7 @@ body {
 
 /* --- Informational Content Section --- */
 .info-section {
-  padding: 3.5rem 1rem;
+  padding: 3.5rem 1rem 4rem;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -1353,9 +1353,8 @@ body {
 
 /* --- FAQ Section --- */
 .faq-section {
-  padding: 2.5rem 1rem 0;
-  max-width: 1000px;
-  margin: 0 auto 2.5rem;
+  margin-top: 4rem;
+  width: 100%;
 }
 
 .faq-section-title {

@@ -25,7 +25,7 @@ export default function FAQ({ items }: FAQProps) {
   };
 
   return (
-    <section className="container faq-section">
+    <div className="faq-section">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <h2 className="faq-section-title">
         Frequently Asked Questions (FAQs)
@@ -66,6 +66,6 @@ export default function FAQ({ items }: FAQProps) {
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }
