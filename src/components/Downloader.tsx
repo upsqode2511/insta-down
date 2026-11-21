@@ -309,77 +309,77 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
                 ? (dict.informationalContent?.reelsWhyUseReasons || dict.informationalContent?.whyUseReasons)
                 : dict.informationalContent?.whyUseReasons
             )}
-          </section>
 
-          <section className="container features-section">
-            <h2 className="features-section-title">
-              {activeTab === 'reel' 
-                ? (dict.informationalContent?.reelsFeaturesTitle || "Features of InstaDown Instagram Reels Downloader")
-                : (dict.informationalContent?.featuresTitle || "Features of InstaDown")}
-            </h2>
-            <div className="features-grid">
-              {(activeTab === 'reel' ? [
-                {
-                  title: dict.informationalContent?.reelsFeaturesList?.[0]?.title || dict.tabs?.video || "Video",
-                  desc: dict.informationalContent?.reelsFeaturesList?.[0]?.desc || "Our Instagram video downloader helps you save videos using their links (URLs). Simply copy the video link, paste it into InstaDown, and use the available download option to save the content to your device.",
-                  image: "/features/feature-video.png",
-                  color: "#7e22ce"
-                },
-                {
-                  title: dict.informationalContent?.reelsFeaturesList?.[1]?.title || dict.tabs?.photo || "Photos",
-                  desc: dict.informationalContent?.reelsFeaturesList?.[1]?.desc || "Save supported Instagram photos using their public post URLs. Instadown offers a simple way to process photo links and download available image content without the need for additional software or complex steps.",
-                  image: "/features/feature-photo.png",
-                  color: "#16a34a"
-                },
-                {
-                  title: dict.informationalContent?.reelsFeaturesList?.[2]?.title || dict.tabs?.profile || "Profile",
-                  desc: dict.informationalContent?.reelsFeaturesList?.[2]?.desc || "The Profile Downloader is designed to help you retrieve downloadable content associated with supported Instagram profiles. Enter the relevant profile URL and use the available options to find and save supported content.",
-                  icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>,
-                  bg: "linear-gradient(135deg, #60a5fa, #2563eb)",
-                  color: "#2563eb"
-                }
-              ] : [
-                {
-                  title: dict.informationalContent?.featuresList?.[0]?.title || dict.tabs?.reel || "Reels",
-                  desc: dict.informationalContent?.featuresList?.[0]?.desc || "Instagram Reels downloader simplifies the process. This processes the reel URL and provides an available download option. Use this feature only in public and respect copyright and permissions.",
-                  image: "/features/feature-reel.png",
-                  color: "#db2777"
-                },
-                {
-                  title: dict.informationalContent?.featuresList?.[1]?.title || dict.tabs?.photo || "Photos",
-                  desc: dict.informationalContent?.featuresList?.[1]?.desc || "Instagram Photo Downloader helps you save photos from publicly accessible Instagram posts. Once the photo is available, you can save it directly to your device. This is useful for keeping images that you want to view later.",
-                  image: "/features/feature-photo.png",
-                  color: "#16a34a"
-                },
-                {
-                  title: dict.informationalContent?.featuresList?.[2]?.title || dict.tabs?.profile || "Profile",
-                  desc: dict.informationalContent?.featuresList?.[2]?.desc || "Instagram Profile Downloader provides a convenient way to access downloadable content associated with publicly accessible Instagram profiles. Use the profile URL with the tool and download the content where permitted.",
-                  image: "/features/feature-profile.png",
-                  color: "#2563eb"
-                }
-              ]).map((card, idx) => (
-                <article key={idx} className="feature-card">
-                  {card.image ? (
-                    <div className="feature-icon-wrapper">
-                      <Image 
-                        src={card.image} 
-                        alt={card.title} 
-                        width={56} 
-                        height={56} 
-                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                      />
+            <div className="features-section">
+              <h2 className="features-section-title">
+                {activeTab === 'reel' 
+                  ? (dict.informationalContent?.reelsFeaturesTitle || "Features of InstaDown Instagram Reels Downloader")
+                  : (dict.informationalContent?.featuresTitle || "Features of InstaDown")}
+              </h2>
+              <div className="features-grid">
+                {(activeTab === 'reel' ? [
+                  {
+                    title: dict.informationalContent?.reelsFeaturesList?.[0]?.title || dict.tabs?.video || "Video",
+                    desc: dict.informationalContent?.reelsFeaturesList?.[0]?.desc || "Our Instagram video downloader helps you save videos using their links (URLs). Simply copy the video link, paste it into InstaDown, and use the available download option to save the content to your device.",
+                    image: "/features/feature-video.png",
+                    color: "#7e22ce"
+                  },
+                  {
+                    title: dict.informationalContent?.reelsFeaturesList?.[1]?.title || dict.tabs?.photo || "Photos",
+                    desc: dict.informationalContent?.reelsFeaturesList?.[1]?.desc || "Save supported Instagram photos using their public post URLs. Instadown offers a simple way to process photo links and download available image content without the need for additional software or complex steps.",
+                    image: "/features/feature-photo.png",
+                    color: "#16a34a"
+                  },
+                  {
+                    title: dict.informationalContent?.reelsFeaturesList?.[2]?.title || dict.tabs?.profile || "Profile",
+                    desc: dict.informationalContent?.reelsFeaturesList?.[2]?.desc || "The Profile Downloader is designed to help you retrieve downloadable content associated with supported Instagram profiles. Enter the relevant profile URL and use the available options to find and save supported content.",
+                    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>,
+                    bg: "linear-gradient(135deg, #60a5fa, #2563eb)",
+                    color: "#2563eb"
+                  }
+                ] : [
+                  {
+                    title: dict.informationalContent?.featuresList?.[0]?.title || dict.tabs?.reel || "Reels",
+                    desc: dict.informationalContent?.featuresList?.[0]?.desc || "Instagram Reels downloader simplifies the process. This processes the reel URL and provides an available download option. Use this feature only in public and respect copyright and permissions.",
+                    image: "/features/feature-reel.png",
+                    color: "#db2777"
+                  },
+                  {
+                    title: dict.informationalContent?.featuresList?.[1]?.title || dict.tabs?.photo || "Photos",
+                    desc: dict.informationalContent?.featuresList?.[1]?.desc || "Instagram Photo Downloader helps you save photos from publicly accessible Instagram posts. Once the photo is available, you can save it directly to your device. This is useful for keeping images that you want to view later.",
+                    image: "/features/feature-photo.png",
+                    color: "#16a34a"
+                  },
+                  {
+                    title: dict.informationalContent?.featuresList?.[2]?.title || dict.tabs?.profile || "Profile",
+                    desc: dict.informationalContent?.featuresList?.[2]?.desc || "Instagram Profile Downloader provides a convenient way to access downloadable content associated with publicly accessible Instagram profiles. Use the profile URL with the tool and download the content where permitted.",
+                    image: "/features/feature-profile.png",
+                    color: "#2563eb"
+                  }
+                ]).map((card, idx) => (
+                  <article key={idx} className="feature-card">
+                    {card.image ? (
+                      <div className="feature-icon-wrapper">
+                        <Image 
+                          src={card.image} 
+                          alt={card.title} 
+                          width={56} 
+                          height={56} 
+                          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                        />
+                      </div>
+                    ) : (
+                      <div className="feature-icon-circle" style={{ background: card.bg }}>
+                        {card.icon}
+                      </div>
+                    )}
+                    <div className="feature-card-content">
+                      <h3 className="feature-card-title" style={{ color: card.color }}>{card.title}</h3>
+                      <p className="feature-card-desc">{card.desc}</p>
                     </div>
-                  ) : (
-                    <div className="feature-icon-circle" style={{ background: card.bg }}>
-                      {card.icon}
-                    </div>
-                  )}
-                  <div className="feature-card-content">
-                    <h3 className="feature-card-title" style={{ color: card.color }}>{card.title}</h3>
-                    <p className="feature-card-desc">{card.desc}</p>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                ))}
+              </div>
             </div>
           </section>
 
@@ -447,60 +447,60 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
               dict.informationalContent?.photoWhyUseTitle,
               dict.informationalContent?.photoWhyUseReasons
             )}
-          </section>
 
-          {dict.informationalContent?.photoFeaturesTitle && dict.informationalContent?.photoFeaturesList && (
-            <section className="container features-section">
-              <h2 className="features-section-title">
-                {dict.informationalContent.photoFeaturesTitle}
-              </h2>
-              <div className="features-grid">
-                {[
-                  {
-                    title: dict.informationalContent.photoFeaturesList[0]?.title || dict.tabs?.video || "Video",
-                    desc: dict.informationalContent.photoFeaturesList[0]?.desc,
-                    image: "/features/feature-video.png",
-                    color: "#7e22ce"
-                  },
-                  {
-                    title: dict.informationalContent.photoFeaturesList[1]?.title || dict.tabs?.reel || "Reels",
-                    desc: dict.informationalContent.photoFeaturesList[1]?.desc,
-                    image: "/features/feature-reel.png",
-                    color: "#db2777"
-                  },
-                  {
-                    title: dict.informationalContent.photoFeaturesList[2]?.title || dict.tabs?.profile || "Profile",
-                    desc: dict.informationalContent.photoFeaturesList[2]?.desc,
-                    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>,
-                    bg: "linear-gradient(135deg, #60a5fa, #2563eb)",
-                    color: "#2563eb"
-                  }
-                ].map((card, idx) => (
-                  <article key={idx} className="feature-card">
-                    {card.image ? (
-                      <div className="feature-icon-wrapper">
-                        <Image 
-                          src={card.image} 
-                          alt={card.title} 
-                          width={56} 
-                          height={56} 
-                          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                        />
+            {dict.informationalContent?.photoFeaturesTitle && dict.informationalContent?.photoFeaturesList && (
+              <div className="features-section">
+                <h2 className="features-section-title">
+                  {dict.informationalContent.photoFeaturesTitle}
+                </h2>
+                <div className="features-grid">
+                  {[
+                    {
+                      title: dict.informationalContent.photoFeaturesList[0]?.title || dict.tabs?.video || "Video",
+                      desc: dict.informationalContent.photoFeaturesList[0]?.desc,
+                      image: "/features/feature-video.png",
+                      color: "#7e22ce"
+                    },
+                    {
+                      title: dict.informationalContent.photoFeaturesList[1]?.title || dict.tabs?.reel || "Reels",
+                      desc: dict.informationalContent.photoFeaturesList[1]?.desc,
+                      image: "/features/feature-reel.png",
+                      color: "#db2777"
+                    },
+                    {
+                      title: dict.informationalContent.photoFeaturesList[2]?.title || dict.tabs?.profile || "Profile",
+                      desc: dict.informationalContent.photoFeaturesList[2]?.desc,
+                      icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>,
+                      bg: "linear-gradient(135deg, #60a5fa, #2563eb)",
+                      color: "#2563eb"
+                    }
+                  ].map((card, idx) => (
+                    <article key={idx} className="feature-card">
+                      {card.image ? (
+                        <div className="feature-icon-wrapper">
+                          <Image 
+                            src={card.image} 
+                            alt={card.title} 
+                            width={56} 
+                            height={56} 
+                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                          />
+                        </div>
+                      ) : (
+                        <div className="feature-icon-circle" style={{ background: card.bg }}>
+                          {card.icon}
+                        </div>
+                      )}
+                      <div className="feature-card-content">
+                        <h3 className="feature-card-title" style={{ color: card.color }}>{card.title}</h3>
+                        <p className="feature-card-desc">{card.desc}</p>
                       </div>
-                    ) : (
-                      <div className="feature-icon-circle" style={{ background: card.bg }}>
-                        {card.icon}
-                      </div>
-                    )}
-                    <div className="feature-card-content">
-                      <h3 className="feature-card-title" style={{ color: card.color }}>{card.title}</h3>
-                      <p className="feature-card-desc">{card.desc}</p>
-                    </div>
-                  </article>
-                ))}
+                    </article>
+                  ))}
+                </div>
               </div>
-            </section>
-          )}
+            )}
+          </section>
 
           <FAQ items={activeTab === 'profile' ? dict.informationalContent?.profileFaqs : activeTab === 'photo' ? dict.informationalContent?.photoFaqs : activeTab === 'reel' ? dict.informationalContent?.reelsFaqs : dict.informationalContent?.videoFaqs} />
         </>
@@ -567,59 +567,59 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
               dict.informationalContent?.profileWhyUseTitle,
               dict.informationalContent?.profileWhyUseReasons
             )}
-          </section>
 
-          {dict.informationalContent?.profileFeaturesTitle && dict.informationalContent?.profileFeaturesList && (
-            <section className="container features-section">
-              <h2 className="features-section-title">
-                {dict.informationalContent.profileFeaturesTitle}
-              </h2>
-              <div className="features-grid">
-                {[
-                  {
-                    title: dict.informationalContent.profileFeaturesList[0]?.title || dict.tabs?.video || "Video",
-                    desc: dict.informationalContent.profileFeaturesList[0]?.desc,
-                    image: "/features/feature-video.png",
-                    color: "#7e22ce"
-                  },
-                  {
-                    title: dict.informationalContent.profileFeaturesList[1]?.title || dict.tabs?.reel || "Reels",
-                    desc: dict.informationalContent.profileFeaturesList[1]?.desc,
-                    image: "/features/feature-reel.png",
-                    color: "#db2777"
-                  },
-                  {
-                    title: dict.informationalContent.profileFeaturesList[2]?.title || dict.tabs?.photo || "Photo",
-                    desc: dict.informationalContent.profileFeaturesList[2]?.desc,
-                    image: "/features/feature-photo.png",
-                    color: "#16a34a"
-                  }
-                ].map((card, idx) => (
-                  <article key={idx} className="feature-card">
-                    {card.image ? (
-                      <div className="feature-icon-wrapper">
-                        <Image 
-                          src={card.image} 
-                          alt={card.title} 
-                          width={56} 
-                          height={56} 
-                          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                        />
+            {dict.informationalContent?.profileFeaturesTitle && dict.informationalContent?.profileFeaturesList && (
+              <div className="features-section">
+                <h2 className="features-section-title">
+                  {dict.informationalContent.profileFeaturesTitle}
+                </h2>
+                <div className="features-grid">
+                  {[
+                    {
+                      title: dict.informationalContent.profileFeaturesList[0]?.title || dict.tabs?.video || "Video",
+                      desc: dict.informationalContent.profileFeaturesList[0]?.desc,
+                      image: "/features/feature-video.png",
+                      color: "#7e22ce"
+                    },
+                    {
+                      title: dict.informationalContent.profileFeaturesList[1]?.title || dict.tabs?.reel || "Reels",
+                      desc: dict.informationalContent.profileFeaturesList[1]?.desc,
+                      image: "/features/feature-reel.png",
+                      color: "#db2777"
+                    },
+                    {
+                      title: dict.informationalContent.profileFeaturesList[2]?.title || dict.tabs?.photo || "Photo",
+                      desc: dict.informationalContent.profileFeaturesList[2]?.desc,
+                      image: "/features/feature-photo.png",
+                      color: "#16a34a"
+                    }
+                  ].map((card, idx) => (
+                    <article key={idx} className="feature-card">
+                      {card.image ? (
+                        <div className="feature-icon-wrapper">
+                          <Image 
+                            src={card.image} 
+                            alt={card.title} 
+                            width={56} 
+                            height={56} 
+                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                          />
+                        </div>
+                      ) : (
+                        <div className="feature-icon-circle" style={{ background: card.bg }}>
+                          {card.icon}
+                        </div>
+                      )}
+                      <div className="feature-card-content">
+                        <h3 className="feature-card-title" style={{ color: card.color }}>{card.title}</h3>
+                        <p className="feature-card-desc">{card.desc}</p>
                       </div>
-                    ) : (
-                      <div className="feature-icon-circle" style={{ background: card.bg }}>
-                        {card.icon}
-                      </div>
-                    )}
-                    <div className="feature-card-content">
-                      <h3 className="feature-card-title" style={{ color: card.color }}>{card.title}</h3>
-                      <p className="feature-card-desc">{card.desc}</p>
-                    </div>
-                  </article>
-                ))}
+                    </article>
+                  ))}
+                </div>
               </div>
-            </section>
-          )}
+            )}
+          </section>
 
           <FAQ items={activeTab === 'profile' ? dict.informationalContent?.profileFaqs : activeTab === 'photo' ? dict.informationalContent?.photoFaqs : activeTab === 'reel' ? dict.informationalContent?.reelsFaqs : dict.informationalContent?.videoFaqs} />
         </>

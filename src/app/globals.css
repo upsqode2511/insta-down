@@ -1125,13 +1125,14 @@ body {
   text-align: justify;
 }
 
+
 /* ============================================================ */
 /* UNIFIED FULL BODY CONTENT STYLES (Single Centralized Control) */
 /* ============================================================ */
 
 /* --- Informational Content Section --- */
 .info-section {
-  padding: 3.5rem 1rem 1rem;
+  padding: 3.5rem 1rem;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -1275,9 +1276,8 @@ body {
 
 /* --- Features Section --- */
 .features-section {
-  padding: 3.5rem 1rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  margin-top: 4rem;
+  width: 100%;
 }
 
 .features-section-title {
