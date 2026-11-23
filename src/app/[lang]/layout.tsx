@@ -6,11 +6,11 @@ import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: {
-    default: "Insta Download - Fast & Free Media Downloader",
-    template: "%s | Insta Download"
+    default: "InstaDown - Fast & Free Instagram Downloader",
+    template: "%s | InstaDown"
   },
-  description: "Download photos, videos, and reels quickly and safely with Insta Download.",
-  keywords: ["instagram downloader", "insta download", "reels downloader", "instagram video download", "free downloader"],
+  description: "Download photos, videos, and reels quickly and safely with InstaDown.",
+  keywords: ["instagram downloader", "insta download", "instadown", "reels downloader", "instagram video download", "free downloader"],
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -25,10 +25,10 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Insta Download - Fast & Free Media Downloader",
-    description: "Download photos, videos, and reels quickly and safely with Insta Download.",
+    title: "InstaDown - Fast & Free Instagram Downloader",
+    description: "Download photos, videos, and reels quickly and safely with InstaDown.",
     url: 'https://instadownload.example.com',
-    siteName: 'Insta Download',
+    siteName: 'InstaDown',
     images: [
       {
         url: 'https://instadownload.example.com/og-image.jpg',
@@ -41,13 +41,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Insta Download - Fast & Free Media Downloader",
-    description: "Download photos, videos, and reels quickly and safely with Insta Download.",
+    title: "InstaDown - Fast & Free Instagram Downloader",
+    description: "Download photos, videos, and reels quickly and safely with InstaDown.",
     images: ['https://instadownload.example.com/og-image.jpg'],
   },
   other: {
-    'itemprop:name': "Insta Download - Fast & Free Media Downloader",
-    'itemprop:description': "Download photos, videos, and reels quickly and safely with Insta Download.",
+    'itemprop:name': "InstaDown - Fast & Free Instagram Downloader",
+    'itemprop:description': "Download photos, videos, and reels quickly and safely with InstaDown.",
   },
   robots: {
     index: true,

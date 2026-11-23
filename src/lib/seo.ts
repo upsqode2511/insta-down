@@ -15,13 +15,13 @@ export function getSEOMetaDataValues(lang: string, pageType: 'video' | 'photo' |
   switch (pageType) {
     case 'video':
       slug = "";
-      title = lang === 'en' ? "Instagram Downloader" : dict.pages.videoTitle;
-      description = lang === 'en' ? "Download Instagram videos, reels, photos and profile pictures in high quality, fast and for free." : dict.pages.videoSubtitle;
+      title = (!lang || lang === 'en') ? "InstaDown | Download Instagram Video, Reels, Photos & Profile" : dict.pages.videoTitle;
+      description = (!lang || lang === 'en') ? "InstaDown is a free & fast Instagram downloader that helps you download Instagram videos, reels, photos and profiles. It works on any device without any signup." : dict.pages.videoSubtitle;
       break;
     case 'photo':
       slug = "instagram-photo-downloader";
-      title = lang === 'en' ? "Instagram Photo Downloader Save photos in HD Free - Instadown" : dict.pages.photoTitle;
-      description = lang === 'en' ? "Download Instagram photos directly to your device fast, free and without watermarks in 100% original quality using our Instagram Photo Downloader tool at Instadown." : dict.pages.photoSubtitle;
+      title = (!lang || lang === 'en') ? "Instagram Photo Downloader Save photos in HD Free - Instadown" : dict.pages.photoTitle;
+      description = (!lang || lang === 'en') ? "Download Instagram photos directly to your device fast, free and without watermarks in 100% original quality using our Instagram Photo Downloader tool at Instadown." : dict.pages.photoSubtitle;
       break;
     case 'story':
       slug = "instagram-story-downloader";
@@ -30,13 +30,13 @@ export function getSEOMetaDataValues(lang: string, pageType: 'video' | 'photo' |
       break;
     case 'reel':
       slug = "instagram-reels-downloader";
-      title = lang === 'en' ? "Instagram Reels Downloader in HD | InstaDown" : dict.pages.reelsTitle;
-      description = lang === 'en' ? "Instagram Reels Downloader allows you to download Reels easily and for free in high quality on Android and iPhone. No login, software, or watermark is required." : dict.pages.reelsSubtitle;
+      title = (!lang || lang === 'en') ? "Instagram Reels Downloader in HD | InstaDown" : dict.pages.reelsTitle;
+      description = (!lang || lang === 'en') ? "Instagram Reels Downloader allows you to download Reels easily and for free in high quality on Android and iPhone. No login, software, or watermark is required." : dict.pages.reelsSubtitle;
       break;
     case 'profile':
       slug = "instagram-profile-downloader";
-      title = lang === 'en' ? "Instagram Profile Picture Downloader in HD - Instadown" : dict.pages.profileTitle;
-      description = lang === 'en' ? "Download Instagram profile pictures using a free and fast online web-based tool. 'Insta Profile Viewer' is a 100% free and the best Instagram profile downloader." : dict.pages.profileSubtitle;
+      title = (!lang || lang === 'en') ? "Instagram Profile Picture Downloader in HD - Instadown" : dict.pages.profileTitle;
+      description = (!lang || lang === 'en') ? "Download Instagram profile pictures using a free and fast online web-based tool. 'Insta Profile Viewer' is a 100% free and the best Instagram profile downloader." : dict.pages.profileSubtitle;
       break;
   }
 
@@ -60,7 +60,9 @@ export function getSEOMetadata(lang: string, pageType: 'video' | 'photo' | 'stor
   });
 
   return {
-    title,
+    title: {
+      absolute: title,
+    },
     description,
     openGraph: {
       title,
