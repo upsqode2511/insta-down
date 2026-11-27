@@ -36,7 +36,7 @@ export function getSEOMetaDataValues(lang: string, pageType: 'video' | 'photo' |
     case 'profile':
       slug = "instagram-profile-downloader";
       title = (!lang || lang === 'en') ? "Instagram Profile Picture Downloader in HD - Instadown" : dict.pages.profileTitle;
-      description = (!lang || lang === 'en') ? "Download Instagram profile pictures using a free and fast online web-based tool. 'Insta Profile Viewer' is a 100% free and the best Instagram profile downloader." : dict.pages.profileSubtitle;
+      description = (!lang || lang === 'en') ? "Download Instagram profile pictures using a free and fast online web-based tool. Insta Profile Viewer is a 100% free and the best Instagram profile downloader." : dict.pages.profileSubtitle;
       break;
   }
 

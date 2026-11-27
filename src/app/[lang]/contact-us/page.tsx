@@ -89,7 +89,7 @@ export default function ContactUsPage() {
             </p>
 
             <div>
-              <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0.25rem', color: '#334155' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#334155' }}>
                 Email Support
               </h3>
               <p style={{ color: '#0f172a', fontWeight: '600', margin: 0, fontSize: '15px' }}>
@@ -98,7 +98,7 @@ export default function ContactUsPage() {
             </div>
 
             <div>
-              <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0.25rem', color: '#334155' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#334155' }}>
                 Response Time
               </h3>
               <p style={{ color: '#475569', margin: 0, fontSize: '15px' }}>

@@ -78,15 +78,15 @@ const dictionaries: Record<string, Dictionary> = {
 },
     pages: {
       "videoTitle": "Instagram Downloader",
-      "videoSubtitle": "InstaDown is a free & fast Instagram downloader that helps you download Instagram videos, reels, photos and profiles. It works on any device without any signup.",
+      "videoSubtitle": "Download Instagram videos, reels, photos and profile pictures in high quality, fast and for free.",
       "photoTitle": "Instagram Photo Downloader",
       "photoSubtitle": "Download Instagram photos directly to your device fast, free and without watermarks in 100% original quality using our Instagram Photo Downloader tool at Instadown.",
       "reelsTitle": "Instagram Reels Downloader",
-      "reelsSubtitle": "Instagram Reels Downloader allows you to download Reels easily and for free in high quality on Android and iPhone. No login, software, or watermark is required.",
+      "reelsSubtitle": "InstaDown is the ultimate Instagram Reels Downloader allowing you to download Instagram Reels without a watermark quickly and easily.",
       "storyTitle": "Instagram Story Downloader",
       "storySubtitle": "Download Instagram Stories and Highlights anonymously and for free",
       "profileTitle": "Instagram Profile Downloader",
-      "profileSubtitle": "Download Instagram profile pictures using a free and fast online web-based tool. 'Insta Profile Viewer' is a 100% free and the best Instagram profile downloader."
+      "profileSubtitle": "Download Instagram profile pictures using a free and fast online web-based tool. Insta Profile Viewer is a 100% free and the best Instagram profile downloader."
 },
     informationalContent: {
       "videoInfoTitle": "Instagram Video Downloader",

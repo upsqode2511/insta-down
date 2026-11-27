@@ -19,7 +19,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       dict={dict}
       activeTab="reel"
       title={dict.pages.reelsTitle}
-      subtitle={metaDescription || dict.pages.reelsSubtitle}
+      subtitle={dict.pages.reelsSubtitle}
       metaTitle={metaTitle}
       metaDescription={metaDescription}
     />

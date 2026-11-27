@@ -40,9 +40,9 @@ function renderWhyUseList(title?: string, reasons?: string[]) {
 
           return (
             <div key={idx} className="why-use-item">
-              <p className="why-use-item-title">
+              <h3 className="why-use-item-title">
                 {`${idx + 1}. ${itemTitle}`}
-              </p>
+              </h3>
               {itemDesc && (
                 <p className="why-use-item-desc">
                   {itemDesc}
@@ -224,13 +224,13 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
       {(activeTab === 'video' || activeTab === 'reel') && (
         <>
           <section className="container info-section">
-            <h2 className="info-section-title">
+            <h1 className="info-section-title">
               {activeTab === 'video'
                 ? (dict.informationalContent?.videoInfoTitle || 'Instagram Video Downloader')
                 : activeTab === 'reel'
                 ? (dict.informationalContent?.reelsInfoTitle || 'Instagram Reels Downloader HD')
                 : title}
-            </h2>
+            </h1>
             <div className="info-section-content">
               {activeTab === 'reel' && (
                 <>
@@ -262,11 +262,11 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
                     ? (dict.informationalContent?.reelsHowItWorksTitle || dict.informationalContent?.howItWorksTitle || 'How it works')
                     : (dict.informationalContent?.howItWorksTitle || 'How it works')}
                 </h2>
-                <p className="how-it-works-subtitle">
-                  {activeTab === 'reel'
-                    ? (dict.informationalContent?.reelsHowItWorksSubtitle || dict.informationalContent?.howItWorksSubtitle || 'Download in just 3 simple steps')
-                    : (dict.informationalContent?.howItWorksSubtitle || 'Download in just 3 simple steps')}
-                </p>
+                {activeTab === 'reel' && dict.informationalContent?.reelsHowItWorksSubtitle && (
+                  <p className="how-it-works-subtitle">
+                    {dict.informationalContent.reelsHowItWorksSubtitle}
+                  </p>
+                )}
               </div>
               
               <div className="how-it-works-container">
@@ -390,9 +390,9 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
       {activeTab === 'photo' && dict.informationalContent?.photoInfoTitle && (
         <>
           <section className="container info-section">
-            <h2 className="info-section-title">
+            <h1 className="info-section-title">
               {dict.informationalContent.photoInfoTitle}
-            </h2>
+            </h1>
             <div className="info-section-content">
               {dict.informationalContent.photoInfoParagraphs?.map((paragraph: string, index: number) => (
                 <p key={index}>
@@ -407,9 +407,6 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
                   <h2 className="how-it-works-title">
                     {dict.informationalContent.photoHowItWorksTitle}
                   </h2>
-                  <p className="how-it-works-subtitle">
-                    Download in just 3 simple steps
-                  </p>
                 </div>
                 
                 <div className="how-it-works-container">
@@ -510,9 +507,9 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
       {activeTab === 'profile' && dict.informationalContent?.profileInfoTitle && (
         <>
           <section className="container info-section">
-            <h2 className="info-section-title">
+            <h1 className="info-section-title">
               {dict.informationalContent.profileInfoTitle}
-            </h2>
+            </h1>
             <div className="info-section-content">
               {dict.informationalContent.profileInfoParagraphs?.map((paragraph: string, index: number) => (
                 <p key={index}>
@@ -527,9 +524,6 @@ export default function Downloader({ lang, activeTab, title, subtitle, dict, met
                   <h2 className="how-it-works-title">
                     {dict.informationalContent.profileHowItWorksTitle}
                   </h2>
-                  <p className="how-it-works-subtitle">
-                    Download in just 3 simple steps
-                  </p>
                 </div>
                 
                 <div className="how-it-works-container">
